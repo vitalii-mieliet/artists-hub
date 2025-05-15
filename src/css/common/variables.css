@@ -1,0 +1,63 @@
+:root {
+  --color-scheme-1-background: var(--color-neutral-darkest);
+  --color-neutral-darkest: #060307;
+  --color-scheme-1-border: var(--opacity-white-20);
+  --color-scheme-1-text: var(--color-white);
+  --color-neutral-lighter: #d9d9d9;
+  --color-white: #fff;
+  --color-neutral-lightest: #f2f2f2;
+  --color-neutral-light: #b4b3b4;
+  --color-neutral: #828183;
+  --color-neutral-dark: #504e51;
+  --color-neutral-darker: #1e1c1f;
+  --opacity-transparent: rgba(255, 255, 255, 0);
+  --color-scheme-1-foreground: var(--color-neutral-darkest);
+  --color-scheme-1-accent: var(--color-white);
+  --opacity-white-5: rgba(255, 255, 255, 0.05);
+  --opacity-white-10: rgba(255, 255, 255, 0.1);
+  --opacity-white-15: rgba(255, 255, 255, 0.15);
+  --opacity-white-20: rgba(255, 255, 255, 0.2);
+  --opacity-white-30: rgba(255, 255, 255, 0.3);
+  --opacity-white-40: rgba(255, 255, 255, 0.4);
+  --opacity-white-50: rgba(255, 255, 255, 0.5);
+  --opacity-white-60: rgba(255, 255, 255, 0.6);
+  --opacity-neutral-darkest-5: rgba(6, 3, 7, 0.05);
+  --opacity-neutral-darkest-10: rgba(6, 3, 7, 0.1);
+  --opacity-neutral-darkest-15: rgba(6, 3, 7, 0.15);
+  --opacity-neutral-darkest-20: rgba(6, 3, 7, 0.2);
+  --opacity-neutral-darkest-30: rgba(6, 3, 7, 0.3);
+  --opacity-neutral-darkest-40: rgba(6, 3, 7, 0.4);
+  --opacity-neutral-darkest-50: rgba(6, 3, 7, 0.5);
+  --opacity-neutral-darkest-60: rgba(6, 3, 7, 0.6);
+  --color-affair-lightest: #f1ecf4;
+  --color-affair-lighter: #e3d9e9;
+  --color-affair-light: #9f7ab2;
+  --color-affair: #764191;
+  --color-affair-dark: #5e3474;
+  --color-affair-darker: #2f1a3a;
+  --color-affair-darkest: #23132b;
+  --color-chateau-green-lightest: #ecf4ed;
+  --color-chateau-green-lighter: #d9eadc;
+  --color-chateau-green-light: #7ab686;
+  --color-chateau-green: #419853;
+  --color-chateau-green-dark: #347942;
+  --color-chateau-green-darker: #1a3c21;
+  --color-chateau-green-darkest: #132d18;
+  --color-scheme-2-text: var(--color-white);
+  --color-scheme-2-background: var(--color-neutral-darker);
+  --color-scheme-2-border: var(--opacity-white-20);
+  --color-scheme-2-accent: var(--color-white);
+  --color-scheme-2-foreground: var(--color-neutral-darker);
+  --color-scheme-3-text: var(--color-white);
+  --color-scheme-3-background: var(--color-affair-darkest);
+  --color-scheme-3-border: var(--opacity-white-20);
+  --color-scheme-3-accent: var(--color-white);
+  --color-scheme-3-foreground: var(--color-affair-darkest);
+  --color-error-red: #af0404;
+}
+
+:root {
+  --font-family: 'IBM Plex Sans', sans-serif;
+  --second-family: 'Epilogue', sans-serif;
+  --third-family: 'Roboto', sans-serif;
+}

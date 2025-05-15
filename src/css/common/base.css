@@ -1,0 +1,74 @@
+/* ==============================
+   Base Global Styles (Mobile First)
+   ============================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+  font-size: 100%; /* Base font size: 16px */
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-scheme-1-text);
+  background: var(--color-scheme-1-background);
+  letter-spacing: -0.02em;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Interactive elements */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Utility classes */
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Tablet: from 768px and up */
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 112.5%; /* 18px */
+  }
+
+  body {
+    font-size: 20px;
+  }
+}
+
+/* Desktop: from 1440px and up */
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 125%; /* 20px */
+  }
+}
