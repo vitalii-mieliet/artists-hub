@@ -1,0 +1,92 @@
+/* .testimonial-card {
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stars {
+  color: #a36bf4;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.author {
+  font-size: 16px;
+  color: #ccc;
+}
+
+/* Навігаційні кнопки */
+/* .splide__arrow {
+  background: transparent;
+  border: 1px solid #666;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.splide__arrow svg {
+  fill: #fff;
+}
+
+/* Пагінація */
+/* .splide__pagination__page {
+  background: #777;
+}
+
+.splide__pagination__page.is-active {
+  background: #fff;
+}
+
+.splide {
+  width: 90%;
+  max-width: 1000px;
+} */
+
+.reviews-splide-list {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .reviews-splide-list {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .reviews-splide-list {
+    font-size: 32px;
+    line-height: 1.3;
+  }
+}
+
+.reviews-splide-slide {
+}
+.reviews-testimonial-card {
+}
+.reviews-stars {
+  margin-bottom: 32px;
+}
+.reviews-quote {
+  margin-bottom: 32px;
+}
+.reviews-author {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-white);
+}

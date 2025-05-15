@@ -1,3 +1,45 @@
 <section class="section">
-  <div class="container"><h2>Section Reviews</h2></div>
+  <div class="container">
+    <h2 class="visually-hidden">Section Reviews</h2>
+    <div id="reviews-slider" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list reviews-splide-list">
+          <li class="splide__slide reviews-splide-slide">
+            <div class="reviews-testimonial-card">
+              <div class="reviews-stars">★ ★ ★ ★ ☆</div>
+              <p class="reviews-quote">
+                "ArtistsHub has transformed the way I discover new music. It's
+                like having a personal DJ that knows my taste perfectly!"
+              </p>
+              <p class="reviews-author">Emily Johnson</p>
+            </div>
+          </li>
+
+          <!-- Додаткові слайди -->
+          <li class="splide__slide reviews-splide-slide">
+            <div class="reviews-testimonial-card">
+              <div class="reviews-stars">★ ★ ★ ★ ★</div>
+              <p class="reviews-quote">
+                "I never knew discovering music could be this fun and accurate."
+              </p>
+              <p class="reviews-author">Mark Rivera</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#reviews-slider', {
+      type: 'loop',
+      autoplay: true,
+      interval: 4000,
+      pauseOnHover: true,
+      arrows: true,
+      pagination: true,
+      speed: 800,
+    }).mount();
+  });
+</script>
