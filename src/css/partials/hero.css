@@ -1,0 +1,112 @@
+.hero-section {
+  background: var(--color-scheme-3-background);
+  position: relative;
+  padding-top: 64px;
+}
+
+.hero-wrapper-up-gradient {
+  background: linear-gradient(0deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  width: 100%;
+  height: 80px;
+}
+.hero-title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 20px;
+}
+.hero-description {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 24px;
+}
+
+.hero-link-artist {
+  border-radius: 12px;
+  padding: 10px 24px;
+  width: 280px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-affair);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+.hero-photo-box {
+  height: 385px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.hero-column-up {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-image-up {
+  border-radius: 16px;
+  margin-bottom: 16px;
+  width: 160px;
+  height: 170px;
+  object-fit: cover;
+  transform: translateY(-70px);
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+  animation-name: hero-images-move-down;
+  animation-timing-function: linear;
+}
+
+.hero-column-up:hover .hero-image-up,
+.hero-column-down:hover .hero-image-down {
+  animation-play-state: paused;
+}
+
+.hero-image-down {
+  margin-bottom: 16px;
+  border-radius: 16px;
+  width: 160px;
+  height: 170px;
+  object-fit: cover;
+  transform: translateY(0px);
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-name: hero-images-move-up;
+  animation-timing-function: linear;
+}
+
+.hero-column-down {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-wrapper-down-gradient {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  z-index: 11;
+  pointer-events: none;
+  width: 100%;
+  height: 106px;
+  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+}
