@@ -64,6 +64,10 @@
   flex-direction: column;
 }
 
+.hero-icon {
+  fill: white;
+}
+
 .hero-image-up {
   border-radius: 16px;
   margin-bottom: 16px;
