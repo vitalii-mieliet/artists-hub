@@ -1,11 +1,11 @@
 {
-  "name": "internal-tools-x",
+  "name": "test-shop",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/internal-tools-x/",
+    "build": "vite build --base=/test-shop/",
     "preview": "vite preview"
   },
   "devDependencies": {
