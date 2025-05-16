@@ -20,9 +20,9 @@ jobs:
         run: |
           PARENTS_COUNT=$(git rev-list --count --parents -n 1 HEAD)
           if [ "$PARENTS_COUNT" -gt 1 ]; then
-            echo "is_merge=true" >> $GITHUB_ENV
+            echo "::set-output name=is_merge::true"
           else
-            echo "is_merge=false" >> $GITHUB_ENV
+            echo "::set-output name=is_merge::false"
           fi
 
       - name: Get last commit
@@ -32,7 +32,7 @@ jobs:
           echo "::set-output name=commits::$(cat commit.txt)"
 
       - name: Send notification to Discord
-        if: env.is_merge == 'false'
+        if: steps.check_merge.outputs.is_merge == 'false'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
@@ -41,7 +41,7 @@ jobs:
             "$DISCORD_WEBHOOK_URL"
 
       - name: Send notification to Slack
-        if: env.is_merge == 'false'
+        if: steps.check_merge.outputs.is_merge == 'false'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         run: |
