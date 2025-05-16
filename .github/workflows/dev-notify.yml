@@ -1,0 +1,27 @@
+name: Notify on push to dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Отправка уведомления в Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\"}" \
+               "$DISCORD_WEBHOOK_URL"
+
+      - name: Отправка уведомления в Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+               --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\"}" \
+               "$SLACK_WEBHOOK_URL"
