@@ -1,17 +1,50 @@
-/* Mobile First - Default styles (Mobile: 320px and up) */
-.hidden {
-}
+/* Mobile First - Default styles (Mobile: 320px and up)
 
+/* .hidden {
+} */
+
+.section {
+  padding: 64px 20px;
+  width: 320px;
+  height: 716px;
+}
 .about-us-image {
+  position: relative;
+  text-align: center;
+  border-radius: 16px;
+  width: 280px;
+  height: 168px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  margin-bottom: 48px;
 }
 
 .about-us-container {
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+}
+
+.about-us-container svg {
+  padding-bottom: 20px;
+  /* padding-left: 20px; */
 }
 
 .about-us-title {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: left;
+  padding-bottom: 20px;
 }
 
 .about-us-text {
+  text-align: left;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 480px;
 }
 /* Tablet: from 768px and up */
 @media screen and (min-width: 768px) {
