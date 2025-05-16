@@ -1,5 +1,5 @@
 
-/************ Mobile-first ************/
+/************************** Mobile-first **************************/
 
 .section-artist-modal {
     padding-left: 16px;
@@ -97,6 +97,17 @@
     margin-bottom: 16px;
 }
 
+
+
+.artist-modal-fetched-albums-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+
+
 .artist-modal-album-container {
     padding: 14px 11px;
     border-radius: 16px;
@@ -189,7 +200,8 @@
 }
 
 
-/************ For Tablet ************/
+/************************** For Tablet **************************/
+
 @media screen and (min-width: 768px) {
     
     .section-artist-modal {
@@ -208,7 +220,6 @@
     }
 
     .artist-modal-name {
-        font-family: var(--second-family);
         font-size: 32px;
     }
 
@@ -245,20 +256,103 @@
         margin-bottom: 0;
     }
 
+
+
+    .artist-modal-fetched-albums-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+        
+
+
     .artist-modal-album-container {
-        padding: 14px 11px;
-        border-radius: 16px;
-        width: 272px;
-        /* height: 634px; */
-        min-width: 250px;
-        background-color: var(--color-neutral-darker);
+        width: 311px;
+        min-width: 272px;
     }
     
+    .artist-modal-album-track-header-list {
+        padding: 4px 17px 4px 12px;
+        width: 289px;
+    }
+
+    .artist-modal-track-list {
+        width: 289px;
+    }
+        
+    .artist-modal-track-list-item {
+        padding: 7px 11px 17px 12px;
+    }
 }
 
 
-/************ For Desktop ************/
+/************************** For Desktop **************************/
+
 @media screen and (min-width: 1440px) {
+    
+    .section-artist-modal {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
 
+    .container-artist-modal {
+        padding: 64px;
+        width: 1312px;
+    }
 
+    .artist-modal-close-btn {
+        margin-right: 16px;
+    }
+
+    .artist-modal-biography-field {
+        display: flex;
+        width: 1184px;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 48px;
+        margin-top: 48px;
+    }
+
+    .artist-modal-album-img {
+        width: 576px;
+        height: 354px;
+        margin: 0;
+    }
+
+    .artist-modal-album-list-wrapper {
+        margin-bottom: 0;
+        width: 576px;
+    }
+
+    .biography-paragraph {
+        max-width: 576px;
+        height: 135px;
+    }
+
+    .artist-modal-album-container {
+        max-width: 272px;
+    }
+
+    .artist-modal-album-track-header-list {
+        padding: 4px 11px 4px 12px;
+        width: 250px;
+    }
+
+    .artist-modal-track-list {
+        width: 250px;
+    }
+            
+    .biography-list-item-text {
+        max-width: 576px;
+    }
+
+    .artist-modal-album-list {
+        max-width: 576px;
+    }
+    
+
+    .artist-modal-fetched-albums-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+
+    }
 }
