@@ -15,24 +15,36 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get last 5 commits
+      - name: Check if commit is a merge commit
+        id: check_merge
+        run: |
+          PARENTS_COUNT=$(git rev-list --count --parents -n 1 HEAD)
+          if [ "$PARENTS_COUNT" -gt 1 ]; then
+            echo "is_merge=true" >> $GITHUB_ENV
+          else
+            echo "is_merge=false" >> $GITHUB_ENV
+          fi
+
+      - name: Get last commit
         id: commits
         run: |
-          git log -5 --pretty=format:"%h %an: %s" > commits.txt
-          echo "::set-output name=commits::$(cat commits.txt | sed ':a;N;$!ba;s/\n/\\n/g')"
+          git log -1 --pretty=format:"%h %an: %s" > commit.txt
+          echo "::set-output name=commits::$(cat commit.txt)"
 
-      - name: Отправка уведомления в Discord
+      - name: Send notification to Discord
+        if: env.is_merge == 'false'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           curl -H "Content-Type: application/json" \
-            -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанній коміт:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
             "$DISCORD_WEBHOOK_URL"
 
-      - name: Отправка уведомления в Slack
+      - name: Send notification to Slack
+        if: env.is_merge == 'false'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         run: |
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанній коміт:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
             "$SLACK_WEBHOOK_URL"
