@@ -1,6 +1,6 @@
 .reviews-custom-arrows {
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 0;
   right: 0;
   z-index: 2;
@@ -149,4 +149,12 @@
 
 .reviews-icon-stars {
   fill: var(--color-white);
+}
+
+.reviews-icon-rating {
+  fill: #fff;
+}
+
+.reviews-icon-rating-gold {
+  fill: gold;
 }

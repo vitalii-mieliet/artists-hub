@@ -1,8 +1,3 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
-/>
-
 <section class="section">
   <div class="container">
     <h2 class="visually-hidden">Section Reviews</h2>
@@ -86,27 +81,5 @@
     </div>
   </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-
+<script src="../js/view/reviews.js"></script>
 <!-- Твій ініціалізаційний скрипт -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const splide = new Splide('.splide', {
-      type: 'loop',
-      autoplay: false,
-      interval: 4000,
-      pauseOnHover: true,
-      arrows: false,
-      pagination: true,
-      speed: 800,
-    });
-    splide.mount();
-
-    document
-      .getElementById('prev-arrow')
-      .addEventListener('click', () => splide.go('<'));
-    document
-      .getElementById('next-arrow')
-      .addEventListener('click', () => splide.go('>'));
-  });
-</script>

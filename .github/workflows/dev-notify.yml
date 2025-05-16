@@ -1,6 +1,4 @@
-# .github/workflows/dev-notify.yml
-
-name: Notify Discord and Slack on Push to Dev
+name: Notify on push to dev
 
 on:
   push:
@@ -10,29 +8,31 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Check for dependency changes
-        id: deps_check
+      - name: Get last 5 commits
+        id: commits
         run: |
-          git fetch origin
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E 'package(-lock)?\.json'; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
+          git log -5 --pretty=format:"%h %an: %s" > commits.txt
+          echo "::set-output name=commits::$(cat commits.txt | sed ':a;N;$!ba;s/\n/\\n/g')"
 
-      - name: Prepare commit message
-        id: commit_msg
+      - name: Отправка уведомления в Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          msg=$(echo "${{ github.event.head_commit.message }}" | sed ':a;N;$!ba;s/\n/ /g')
-          echo "msg=$msg" >> $GITHUB_OUTPUT
+          curl -H "Content-Type: application/json" \
+            -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$DISCORD_WEBHOOK_URL"
 
-      - name: Send Discord notification
+      - name: Отправка уведомления в Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         run: |
-          if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
-            message="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n📝 Коміт: ${{ steps.commit_msg.outputs.msg }}"
-          else
-            message="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$SLACK_WEBHOOK_URL"
