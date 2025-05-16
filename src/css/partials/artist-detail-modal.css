@@ -188,3 +188,17 @@
     border-radius: 8px;
     background-color: var(--opacity-white-10);
 }
+
+
+/************ For Tablet ************/
+@media screen and (min-width: 768px) {
+
+
+}
+
+
+/************ For Tablet ************/
+@media screen and (min-width: 1440px) {
+
+
+}
