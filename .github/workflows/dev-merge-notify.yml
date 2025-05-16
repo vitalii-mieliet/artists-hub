@@ -33,7 +33,7 @@ jobs:
         with:
           payload: |
             {
-              "text": ":twisted_rightwards_arrows: *Merge у `main`!* :rocket:\nЗлито `${{ github.event.pull_request.head.ref }}` → `main`\n*PR:* _${{ steps.pr_message.outputs.title }}_\n\n:pushpin: *Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:*\n```bash\ngit add .\ngit commit -m \"Ваш коміт\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\n```\n<${{ github.event.pull_request.html_url }}|Перейти до Pull Request>"
+              "text": ":twisted_rightwards_arrows: *Merge у `dev`!* :rocket:\nЗлито `${{ github.event.pull_request.head.ref }}` → `dev`\n*PR:* _${{ steps.pr_message.outputs.title }}_\n\n:pushpin: *Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:*\n```bash\ngit add .\ngit commit -m \"Ваш коміт\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\n```\n<${{ github.event.pull_request.html_url }}|Перейти до Pull Request>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

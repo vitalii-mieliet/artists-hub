@@ -1,6 +1,4 @@
-# .github/workflows/dev-notify.yml
-
-name: Notify Discord and Slack on Push to Dev
+name: Notify Discord on Push to Dev
 
 on:
   push:
@@ -10,8 +8,9 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Check for dependency changes
@@ -24,37 +23,22 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Prepare commit message
-        id: commit_msg
+      - name: Prepare notification message
+        id: notify_msg
         run: |
-          msg=$(echo "${{ github.event.head_commit.message }}" | sed ':a;N;$!ba;s/\n/ /g')
-          echo "msg=$msg" >> $GITHUB_OUTPUT
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | sed ':a;N;$!ba;s/\n/ /g')
 
-      - name: Send Discord notification
-        run: |
           if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
-            message="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n📝 Коміт: ${{ steps.commit_msg.outputs.msg }}"
+            TEXT="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n📝 Коміт: $COMMIT_MESSAGE"
           else
-            message="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\`\\n📝 Коміт: ${{ steps.commit_msg.outputs.msg }}"
+            TEXT="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\`\\n📝 Коміт: $COMMIT_MESSAGE"
           fi
 
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "{\"content\": \"$message\"}" \
-               ${{ secrets.DISCORD_WEBHOOK }}
+          echo "msg=$TEXT" >> $GITHUB_OUTPUT
 
-      - name: Send Slack notification
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-              "text": "${{ steps.deps_check.outputs.changed == 'true' && format(
-                ':repeat: Внесені зміни в *dev*: :package: *Оновлено залежності!*\n```bash\ngit add .\ngit commit -m \"Ваш коміт\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\n\nnpm install\n```\n*Коміт:* {0}',
-                steps.commit_msg.outputs.msg
-              ) || format(
-                ':repeat: Внесені зміни в *dev*.\n```bash\ngit add .\ngit commit -m \"Ваш коміт\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\n```\n*Коміт:* {0}',
-                steps.commit_msg.outputs.msg
-              ) }}"
-            }
+      - name: Send Discord notification
+        uses: Ilshidur/action-discord@master
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: ${{ steps.notify_msg.outputs.msg }}
