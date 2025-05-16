@@ -1,63 +1,23 @@
-name: Notify Discord and Slack on Push to Dev
+name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - dev
+    branches: [main]
 
 jobs:
-  notify:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and build 🔧
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          fetch-depth: 0
-
-      - name: Check for dependency changes
-        id: deps_check
-        run: |
-          git fetch origin dev
-          if git diff --name-only origin/dev..HEAD | grep -E 'package(-lock)?\.json'; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Prepare commit message and full notification
-        id: notify_msg
-        run: |
-          # Get the latest commit message
-          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
-
-          if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
-            TEXT="🔄 Changes made in branch \`dev\`: 📦 **Dependencies updated!**\n\n"
-            TEXT+="Please save and update your branches before continuing:\n"
-            TEXT+="\`\`\`bash\ngit add .\ngit commit -m 'Your commit'\ngit checkout dev\ngit pull origin dev\ngit checkout your-branch\n\nnpm install\n\`\`\`\n\n"
-            TEXT+="📝 Last commit: $COMMIT_MESSAGE"
-          else
-            TEXT="🔄 Changes made in branch \`dev\`.\n\n"
-            TEXT+="Please save and update your branches before continuing:\n"
-            TEXT+="\`\`\`bash\ngit add .\ngit commit -m 'Your commit'\ngit checkout dev\ngit pull origin dev\ngit checkout your-branch\n\`\`\`\n\n"
-            TEXT+="📝 Last commit: $COMMIT_MESSAGE"
-          fi
-
-          # Safely format JSON using jq
-          echo "msg=$(jq -n --arg msg "$TEXT" '{"content": $msg}')" >> $GITHUB_OUTPUT
-
-      - name: Send Discord notification
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d "${{ steps.notify_msg.outputs.msg }}" \
-          $DISCORD_WEBHOOK_URL
-
-      - name: Send Slack notification
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d "${{ steps.notify_msg.outputs.msg }}" \
-          $SLACK_WEBHOOK_URL
+          branch: gh-pages
+          folder: dist
