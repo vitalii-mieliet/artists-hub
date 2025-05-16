@@ -1,0 +1,38 @@
+# .github/workflows/dev-notify.yml
+
+name: Notify Discord and Slack on Push to Dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Check for dependency changes
+        id: deps_check
+        run: |
+          git fetch origin
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E 'package(-lock)?\.json'; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Prepare commit message
+        id: commit_msg
+        run: |
+          msg=$(echo "${{ github.event.head_commit.message }}" | sed ':a;N;$!ba;s/\n/ /g')
+          echo "msg=$msg" >> $GITHUB_OUTPUT
+
+      - name: Send Discord notification
+        run: |
+          if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
+            message="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n📝 Коміт: ${{ steps.commit_msg.outputs.msg }}"
+          else
+            message="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\

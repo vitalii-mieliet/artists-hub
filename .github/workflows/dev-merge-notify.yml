@@ -1,0 +1,37 @@
+# .github/workflows/dev-merge-notify.yml
+
+name: Notify Discord and Slack on Merge to dev
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  notify-if-merged:
+    if:
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare message
+        id: pr_message
+        run: |
+          title=$(echo "${{ github.event.pull_request.title }}" | sed ':a;N;$!ba;s/\n/ /g')
+          echo "title=$title" >> $GITHUB_OUTPUT
+
+      - name: Send Discord message
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{\"content\": \"🔀 **Merge у гілку \`dev\` через GitHub!**\\n🔧 Злито гілку \`${{ github.event.pull_request.head.ref }}\`\\n📝 PR: *${{ steps.pr_message.outputs.title }}*\\n🔗 [Дивитися Pull Request](${{ github.event.pull_request.html_url }})\"}" \
+               ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Send Slack message
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": ":twisted_rightwards_arrows: *Merge у `dev`!* :rocket:\nЗлито `${{ github.event.pull_request.head.ref }}` → `dev`\n*PR:* _${{ steps.pr_message.outputs.title }}_\n<${{ github.event.pull_request.html_url }}|Перейти до Pull Request>"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
