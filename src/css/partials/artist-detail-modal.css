@@ -10,8 +10,27 @@
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
-    height: 4478px;
-    background-color: #060307;
+    /* height: 4478px; */
+    background-color: var(--color-neutral-darkest);
+}
+
+.artist-modal-close-btn {
+    margin-top: 16px;
+    margin-right: 16px;
+    margin-left: auto;
+    margin-bottom: 4px;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+
+.artist-modal-close-svg {
+    fill: var(--color-white);
+}
+
+.artist-modal-close-btn:hover {
+    fill: var(--color-neutral-lightest);
+    opacity: 0.6;
+    transform: rotate(180deg);
 }
 
 .artist-modal-name {
@@ -29,6 +48,8 @@
     height: 167px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 16px;
+    margin-bottom: 32px;
 }
 
 .artist-modal-album-list {
@@ -36,6 +57,7 @@
     flex-direction: column;
     gap: 16px;
     margin-bottom: 16px;
+    width: 272px;
 }
 
 .modal-album-list-item-title {
@@ -61,7 +83,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--opacity-white-20);
     border-radius: 6px;
     padding: 4px 10px;
     height: 32px;
@@ -80,7 +102,7 @@
     padding: 14px 11px;
     border-radius: 16px;
     width: 272px;
-    height: 634px;
+    /* height: 634px; */
     min-width: 250px;
     background-color: var(--color-neutral-darker);
 }
@@ -103,7 +125,7 @@
     padding: 4px 11px 4px 12px;
     width: 250px;
     height: 20px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--opacity-white-5);
 }
 
 .artist-modal-album-track-header-list-item:nth-child(1) {
@@ -153,7 +175,16 @@
     width: 10%;
 }
 
+.artist-modal-track-list-item-link:hover {
+    fill: var(--color-neutral-lightest);
+    opacity: 0.6;
+}
+
+.artist-modal-track-list-item-svg {
+    fill: var(--color-white);
+}
+
 .artist-modal-track-list-item:nth-child(even) {
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--opacity-white-10);
 }
