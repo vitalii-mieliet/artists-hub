@@ -40,8 +40,8 @@
   text-align: left;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.5;
-  max-width: 480px;
+  line-height: 150%;
+  max-width: 280px;
 }
 /* Tablet: from 768px and up */
 @media screen and (min-width: 768px) {
