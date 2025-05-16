@@ -1,17 +1,43 @@
 
-/************ Mobile-first ************/
+/************************** Mobile-first **************************/
 
-.section-artist-modal {
-    padding-top: 64px;
-    padding-bottom: 64px;
+.backdrop-artist-modal {
+    padding-left: 16px;
+    padding-right: 16px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .container-artist-modal {
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
-    height: 4478px;
-    background-color: #060307;
+    background-color: var(--color-neutral-darkest);
+    position: relative;
+    overflow-y: auto;
+}
+
+.artist-modal-close-btn {
+    margin-top: 16px;
+    margin-right: 16px;
+    margin-left: auto;
+    margin-bottom: 4px;
+    display: block;
+    transition: transform 0.4s ease-in-out;
+}
+
+.artist-modal-close-svg {
+    fill: var(--color-white);
+}
+
+.artist-modal-close-btn:hover {
+    fill: var(--color-neutral-lightest);
+    opacity: 0.6;
+    transform: rotate(180deg);
 }
 
 .artist-modal-name {
@@ -29,6 +55,8 @@
     height: 167px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 16px;
+    margin-bottom: 32px;
 }
 
 .artist-modal-album-list {
@@ -36,6 +64,7 @@
     flex-direction: column;
     gap: 16px;
     margin-bottom: 16px;
+    width: 272px;
 }
 
 .modal-album-list-item-title {
@@ -61,7 +90,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--opacity-white-20);
     border-radius: 6px;
     padding: 4px 10px;
     height: 32px;
@@ -76,11 +105,22 @@
     margin-bottom: 16px;
 }
 
+
+
+.artist-modal-fetched-albums-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+
+
 .artist-modal-album-container {
     padding: 14px 11px;
     border-radius: 16px;
     width: 272px;
-    height: 634px;
+    /* height: 634px; */
     min-width: 250px;
     background-color: var(--color-neutral-darker);
 }
@@ -103,7 +143,7 @@
     padding: 4px 11px 4px 12px;
     width: 250px;
     height: 20px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--opacity-white-5);
 }
 
 .artist-modal-album-track-header-list-item:nth-child(1) {
@@ -153,7 +193,174 @@
     width: 10%;
 }
 
+.artist-modal-track-list-item-link:hover {
+    fill: var(--color-neutral-lightest);
+    opacity: 0.6;
+}
+
+.artist-modal-track-list-item-svg {
+    fill: var(--color-white);
+}
+
 .artist-modal-track-list-item:nth-child(even) {
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--opacity-white-10);
+}
+
+
+/************************** For Tablet **************************/
+
+@media screen and (min-width: 768px) {
+    
+    .backdrop-artist-modal {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .container-artist-modal {
+        padding: 64px 24px;
+        width: 702px;
+    }
+
+    .artist-modal-close-btn {
+        margin-right: 47px;
+        margin-bottom: 16px;
+    }
+
+    .artist-modal-name {
+        font-size: 32px;
+    }
+
+    .artist-modal-album-img {
+        height: 402px;
+        width: 654px;
+        margin-top: 48px;
+    }
+
+    .artist-modal-album-list-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+    
+    .artist-modal-album-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 654px;
+        margin-bottom: 0;
+    }
+
+    .biography-list-item-text {
+        grid-column: 1 / -1;
+    }
+
+    .biography-paragraph {
+        width: 654px;
+    }
+
+    .artist-modal-genres-list {
+        margin-bottom: 0;
+    }
+
+
+
+    .artist-modal-fetched-albums-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+        
+
+
+    .artist-modal-album-container {
+        width: 311px;
+        min-width: 272px;
+    }
+    
+    .artist-modal-album-track-header-list {
+        padding: 4px 17px 4px 12px;
+        width: 289px;
+    }
+
+    .artist-modal-track-list {
+        width: 289px;
+    }
+        
+    .artist-modal-track-list-item {
+        padding: 7px 11px 17px 12px;
+    }
+}
+
+
+/************************** For Desktop **************************/
+
+@media screen and (min-width: 1440px) {
+    
+    .backdrop-artist-modal {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    .container-artist-modal {
+        padding: 64px;
+        width: 1312px;
+    }
+
+    .artist-modal-close-btn {
+        margin-right: 16px;
+    }
+
+    .artist-modal-biography-field {
+        display: flex;
+        width: 1184px;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 48px;
+        margin-top: 48px;
+    }
+
+    .artist-modal-album-img {
+        width: 576px;
+        height: 354px;
+        margin: 0;
+    }
+
+    .artist-modal-album-list-wrapper {
+        margin-bottom: 0;
+        width: 576px;
+    }
+
+    .biography-paragraph {
+        max-width: 576px;
+        height: 135px;
+    }
+
+    .artist-modal-album-container {
+        max-width: 272px;
+    }
+
+    .artist-modal-album-track-header-list {
+        padding: 4px 11px 4px 12px;
+        width: 250px;
+    }
+
+    .artist-modal-track-list {
+        width: 250px;
+    }
+            
+    .biography-list-item-text {
+        max-width: 576px;
+    }
+
+    .artist-modal-album-list {
+        max-width: 576px;
+    }
+    
+
+    .artist-modal-fetched-albums-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+
+    }
 }
