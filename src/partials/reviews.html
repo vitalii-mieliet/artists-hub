@@ -1,24 +1,42 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+/>
+
 <section class="section">
   <div class="container">
     <h2 class="visually-hidden">Section Reviews</h2>
     <div id="reviews-slider" class="splide">
       <div class="splide__track">
-        <ul class="splide__list reviews-splide-list">
-          <li class="splide__slide reviews-splide-slide">
-            <div class="reviews-testimonial-card">
-              <div class="reviews-stars">★ ★ ★ ★ ☆</div>
-              <p class="reviews-quote">
-                "ArtistsHub has transformed the way I discover new music. It's
-                like having a personal DJ that knows my taste perfectly!"
-              </p>
-              <p class="reviews-author">Emily Johnson</p>
-            </div>
+        <ul class="splide__list reviews-list">
+          <li class="splide__slide reviews-slide">
+            <ul class="reviews-stars">
+              <svg class="reviews-icon-stars" width="20" height="19">
+                <use href="../assets/svg/test.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="19">
+                <use href="../assets/svg/test.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="19">
+                <use href="../assets/svg/test.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="19">
+                <use href="../assets/svg/test.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="19">
+                <use href="../assets/svg/test.svg#icon-stars"></use>
+              </svg>
+            </ul>
+            <p class="reviews-quote">
+              "ArtistsHub has transformed the way I discover new music. It's
+              like having a personal DJ that knows my taste perfectly!"
+            </p>
+            <p class="reviews-author">Emily Johnson</p>
           </li>
 
           <!-- Додаткові слайди -->
-          <li class="splide__slide reviews-splide-slide">
+          <li class="splide__slide reviews-slide">
             <div class="reviews-testimonial-card">
-              <div class="reviews-stars">★ ★ ★ ★ ★</div>
               <p class="reviews-quote">
                 "I never knew discovering music could be this fun and accurate."
               </p>
@@ -30,9 +48,12 @@
     </div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+<!-- Твій ініціалізаційний скрипт -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    new Splide('#reviews-slider', {
+    new Splide('.splide', {
       type: 'loop',
       autoplay: true,
       interval: 4000,
