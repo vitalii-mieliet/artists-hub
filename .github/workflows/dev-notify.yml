@@ -1,0 +1,38 @@
+name: Notify on push to dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get last 5 commits
+        id: commits
+        run: |
+          git log -5 --pretty=format:"%h %an: %s" > commits.txt
+          echo "::set-output name=commits::$(cat commits.txt | sed ':a;N;$!ba;s/\n/\\n/g')"
+
+      - name: Отправка уведомления в Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+            -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$DISCORD_WEBHOOK_URL"
+
+      - name: Отправка уведомления в Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанні коміти:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$SLACK_WEBHOOK_URL"
