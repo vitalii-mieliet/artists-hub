@@ -32,9 +32,15 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
 
           if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
-            TEXT="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \"Ваш коміт\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n\\n📝 Останній коміт: $COMMIT_MESSAGE"
+            TEXT="🔄 Changes made in branch \`dev\`: 📦 **Dependencies updated!**\\n\\n"
+            TEXT+="Please save and update your branches before continuing:\\n"
+            TEXT+="\`\`\`bash\\ngit add .\\ngit commit -m \"Your commit\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout your-branch\\n\\nnpm install\\n\`\`\`\\n\\n"
+            TEXT+="📝 Last commit: $COMMIT_MESSAGE"
           else
-            TEXT="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \"Ваш коміт\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\`\\n\\n📝 Останній коміт: $COMMIT_MESSAGE"
+            TEXT="🔄 Changes made in branch \`dev\`.\\n\\n"
+            TEXT+="Please save and update your branches before continuing:\\n"
+            TEXT+="\`\`\`bash\\ngit add .\\ngit commit -m \"Your commit\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout your-branch\\n\`\`\`\\n\\n"
+            TEXT+="📝 Last commit: $COMMIT_MESSAGE"
           fi
 
           echo "msg<<EOF" >> $GITHUB_OUTPUT
