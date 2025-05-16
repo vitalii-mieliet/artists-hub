@@ -2,15 +2,14 @@
 /************ Mobile-first ************/
 
 .section-artist-modal {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .container-artist-modal {
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
-    /* height: 4478px; */
     background-color: var(--color-neutral-darkest);
 }
 
@@ -192,12 +191,73 @@
 
 /************ For Tablet ************/
 @media screen and (min-width: 768px) {
+    
+    .section-artist-modal {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
 
+    .container-artist-modal {
+        padding: 64px 24px;
+        width: 702px;
+    }
 
+    .artist-modal-close-btn {
+        margin-right: 47px;
+        margin-bottom: 16px;
+    }
+
+    .artist-modal-name {
+        font-family: var(--second-family);
+        font-size: 32px;
+    }
+
+    .artist-modal-album-img {
+        height: 402px;
+        width: 654px;
+        margin-top: 48px;
+    }
+
+    .artist-modal-album-list-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+    
+    .artist-modal-album-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 654px;
+        margin-bottom: 0;
+    }
+
+    .biography-list-item-text {
+        grid-column: 1 / -1;
+    }
+
+    .biography-paragraph {
+        width: 654px;
+    }
+
+    .artist-modal-genres-list {
+        margin-bottom: 0;
+    }
+
+    .artist-modal-album-container {
+        padding: 14px 11px;
+        border-radius: 16px;
+        width: 272px;
+        /* height: 634px; */
+        min-width: 250px;
+        background-color: var(--color-neutral-darker);
+    }
+    
 }
 
 
-/************ For Tablet ************/
+/************ For Desktop ************/
 @media screen and (min-width: 1440px) {
 
 
