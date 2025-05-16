@@ -1,55 +1,29 @@
-/* .testimonial-card {
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+.reviews-custom-arrows {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* дозволяє кліки тільки на кнопки */
 }
 
-.stars {
-  color: #a36bf4;
-  font-size: 24px;
-  margin-bottom: 20px;
+.reviews-slider-icons {
+  fill: var(--color-white);
 }
 
-.quote {
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.5;
-  margin-bottom: 20px;
+.reviews-icon-arrows {
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  pointer-events: all; /* увімкнути кліки тільки для кнопок */
 }
-
-.author {
-  font-size: 16px;
-  color: #ccc;
-}
-
-/* Навігаційні кнопки */
-/* .splide__arrow {
-  background: transparent;
-  border: 1px solid #666;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-}
-
-.splide__arrow svg {
-  fill: #fff;
-}
-
-/* Пагінація */
-/* .splide__pagination__page {
-  background: #777;
-}
-
-.splide__pagination__page.is-active {
-  background: #fff;
-}
-
-.splide {
-  width: 90%;
-  max-width: 1000px;
-} */
 
 .reviews-list {
   font-family: var(--second-family);
@@ -61,7 +35,7 @@
   color: var(--color-white);
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1399px) {
+@media only screen and (min-width: 768px) {
   .reviews-list {
     font-size: 26px;
   }
@@ -79,13 +53,13 @@
 .reviews-testimonial-card {
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1399px) {
+@media only screen and (min-width: 768px) {
   .reviews-slide {
     padding: 0 93px;
   }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1440px) {
   .reviews-slide {
     padding: 0 223px;
   }
@@ -101,19 +75,39 @@
 .reviews-quote {
   margin-bottom: 32px;
 }
+
 .reviews-author {
   font-family: var(--font-family);
   font-weight: 600;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
   /* margin-bottom: 16px; */
 }
 
-/* .splide__slide {
-  display: flex;
+@media only screen and (min-width: 1440px) {
+  .reviews-author {
+    /* margin-bottom: 75px; */
+  }
+}
+
+.splide__track {
+  margin-bottom: 16px;
+}
+
+.splide__slide {
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-} */
+  align-items: center; */
+
+  /* padding-bottom: 16px; */
+}
+
+@media only screen and (min-width: 1440px) {
+  .splide__track {
+    /* margin-bottom: 75px; */
+  }
+}
 
 /* @media (max-width: 767px) {
   .splide__arrow {
@@ -121,8 +115,38 @@
   }
 } */
 
-@media (max-width: 767px) {
-  #reviews-slider .splide__arrow {
+@media only screen and (max-width: 767px) {
+  .reviews-custom-arrows {
     display: none;
   }
+}
+
+/* .splide__pagination {
+  position: relative;
+} */
+
+.splide__pagination__page {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-white);
+  opacity: 0.2;
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: opacity 0.3s ease;
+}
+
+.splide__pagination__page.is-active {
+  opacity: 1;
+}
+
+.splide .splide__pagination__page.is-active {
+  transform: scale(1);
+}
+
+#reviews-slider .splide__pagination {
+  position: relative;
+}
+
+.reviews-icon-stars {
+  fill: var(--color-white);
 }

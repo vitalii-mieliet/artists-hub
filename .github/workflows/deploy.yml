@@ -1,23 +1,44 @@
-name: Build and deploy to GitHub Pages
+name: Notify Discord on Push to Dev
 
 on:
   push:
-    branches: [main]
+    branches:
+      - dev
 
 jobs:
-  build-and-deploy:
+  notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Install and build 🔧
+      - name: Check for dependency changes
+        id: deps_check
         run: |
-          npm install
-          npm run build
+          git fetch origin
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E 'package(-lock)?\.json'; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Prepare notification message
+        id: notify_msg
+        run: |
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | sed ':a;N;$!ba;s/\n/ /g')
+
+          if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
+            TEXT="🔄 Внесені зміни в гілку \`dev\`: 📦 **Оновлено залежності!**\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\\nnpm install\\n\`\`\`\\n📝 Коміт: $COMMIT_MESSAGE"
+          else
+            TEXT="🔄 Внесені зміни в гілку \`dev\`.\\n\\nБудь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\\n\`\`\`bash\\ngit add .\\ngit commit -m \\\"Ваш коміт\\\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout ваша-гілка\\n\`\`\`\\n📝 Коміт: $COMMIT_MESSAGE"
+          fi
+
+          echo "msg=$TEXT" >> $GITHUB_OUTPUT
+
+      - name: Send Discord notification
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          branch: gh-pages
-          folder: dist
+          args: ${{ steps.notify_msg.outputs.msg }}

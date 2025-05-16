@@ -7,24 +7,47 @@
   <div class="container">
     <h2 class="visually-hidden">Section Reviews</h2>
     <div id="reviews-slider" class="splide">
+      <div class="reviews-custom-arrows">
+        <button
+          class="reviews-icon-arrows"
+          id="prev-arrow"
+          aria-label="Previous slide"
+        >
+          <!-- SVG Ліва стрілка -->
+          <svg width="24" height="24" class="reviews-slider-icons">
+            <use href="../assets/svg/sprite.svg#icon-left-arrow-alt"></use>
+          </svg>
+        </button>
+        <button
+          class="reviews-icon-arrows"
+          id="next-arrow"
+          aria-label="Next slide"
+        >
+          <!-- SVG Права стрілка -->
+          <svg width="24" height="24" class="reviews-slider-icons">
+            <use href="../assets/svg/sprite.svg#icon-right-arrow-alt"></use>
+          </svg>
+        </button>
+      </div>
+
       <div class="splide__track">
         <ul class="splide__list reviews-list">
           <li class="splide__slide reviews-slide">
             <ul class="reviews-stars">
-              <svg class="reviews-icon-stars" width="20" height="19">
-                <use href="../assets/svg/test.svg#icon-stars"></use>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
               </svg>
-              <svg class="reviews-icon-stars" width="20" height="19">
-                <use href="../assets/svg/test.svg#icon-stars"></use>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
               </svg>
-              <svg class="reviews-icon-stars" width="20" height="19">
-                <use href="../assets/svg/test.svg#icon-stars"></use>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
               </svg>
-              <svg class="reviews-icon-stars" width="20" height="19">
-                <use href="../assets/svg/test.svg#icon-stars"></use>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
               </svg>
-              <svg class="reviews-icon-stars" width="20" height="19">
-                <use href="../assets/svg/test.svg#icon-stars"></use>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
               </svg>
             </ul>
             <p class="reviews-quote">
@@ -36,12 +59,27 @@
 
           <!-- Додаткові слайди -->
           <li class="splide__slide reviews-slide">
-            <div class="reviews-testimonial-card">
-              <p class="reviews-quote">
-                "I never knew discovering music could be this fun and accurate."
-              </p>
-              <p class="reviews-author">Mark Rivera</p>
-            </div>
+            <ul class="reviews-stars">
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
+              </svg>
+              <svg class="reviews-icon-stars" width="20" height="20">
+                <use href="../assets/svg/sprite.svg#icon-stars"></use>
+              </svg>
+            </ul>
+            <p class="reviews-quote">
+              "I never knew discovering music could be this fun and accurate."
+            </p>
+            <p class="reviews-author">Mark Rivera</p>
           </li>
         </ul>
       </div>
@@ -53,14 +91,22 @@
 <!-- Твій ініціалізаційний скрипт -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    new Splide('.splide', {
+    const splide = new Splide('.splide', {
       type: 'loop',
-      autoplay: true,
+      autoplay: false,
       interval: 4000,
       pauseOnHover: true,
-      arrows: true,
+      arrows: false,
       pagination: true,
       speed: 800,
-    }).mount();
+    });
+    splide.mount();
+
+    document
+      .getElementById('prev-arrow')
+      .addEventListener('click', () => splide.go('<'));
+    document
+      .getElementById('next-arrow')
+      .addEventListener('click', () => splide.go('>'));
   });
 </script>
