@@ -15,3 +15,23 @@
     transform: translateY(-558px);
   }
 }
+
+@media screen and (min-width: 768px) {
+  @keyframes hero-images-move-down {
+    0% {
+      transform: translateY(-1068px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes hero-images-move-up {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-1068px);
+    }
+  }
+}
