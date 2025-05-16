@@ -1,0 +1,50 @@
+name: Notify on push to dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check if commit is a merge commit
+        id: check_merge
+        run: |
+          PARENTS_COUNT=$(git rev-list --count --parents -n 1 HEAD)
+          if [ "$PARENTS_COUNT" -gt 1 ]; then
+            echo "::set-output name=is_merge::true"
+          else
+            echo "::set-output name=is_merge::false"
+          fi
+
+      - name: Get last commit
+        id: commits
+        run: |
+          git log -1 --pretty=format:"%h %an: %s" > commit.txt
+          echo "::set-output name=commits::$(cat commit.txt)"
+
+      - name: Send notification to Discord
+        if: steps.check_merge.outputs.is_merge == 'false'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+            -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанній коміт:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$DISCORD_WEBHOOK_URL"
+
+      - name: Send notification to Slack
+        if: steps.check_merge.outputs.is_merge == 'false'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\n\nОстанній коміт:\n\`\`\`\n${{ steps.commits.outputs.commits }}\n\`\`\`\"}" \
+            "$SLACK_WEBHOOK_URL"

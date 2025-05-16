@@ -1,3 +1,45 @@
 <section class="section">
-  <div class="container"><h2>Section About Us</h2></div>
+  <div class="container">
+    <!-- <h2 class="hidden">Section About Us</h2> -->
+    <div class="about-us-image">
+      <picture>
+        <!-- For mobile -->
+        <source
+          media="(max-width: 768px)"
+          srcset="
+            ../assets/images/about-us/team_mob.webp    1x,
+            ../assets/images/about-us/team_mob@2x.webp 2x
+          "
+        />
+        <!-- For tablet-->
+        <source
+          media="(max-width: 1440px)"
+          srcset="
+            ../assets/images/about-us/team_tab.webp    1x,
+            ../assets/images/about-us/team_tab@2x.webp 2x
+          "
+        />
+        <!-- For desktop -->
+        <img
+          src="../assets/images/about-us/team_desk.webp "
+          srcset="
+            ../assets/images/about-us/team_desk.webp    1x,
+            ../assets/images/about-us/team_desk@2x.webp 2x
+          "
+          alt=""
+        />
+      </picture>
+    </div>
+    <div class="about-us-container">
+      <svg class="logo-icon" width="64" height="64">
+        <use href="../assets/svg/sprite.svg#icon-logo-icon"></use>
+      </svg>
+      <h2 class="about-us-title">About ArtistsHub</h2>
+      <p class="about-us-text">
+        At ArtistsHub, our mission is to connect music lovers with the artists
+        they adore. We strive to create a vibrant community where discovering
+        new music is as enjoyable as listening to it.
+      </p>
+    </div>
+  </div>
 </section>
