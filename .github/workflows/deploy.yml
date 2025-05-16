@@ -32,27 +32,27 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
 
           if [ "${{ steps.deps_check.outputs.changed }}" = "true" ]; then
-            TEXT="🔄 Changes made in branch \`dev\`: 📦 **Dependencies updated!**\\n\\n"
-            TEXT+="Please save and update your branches before continuing:\\n"
-            TEXT+="\`\`\`bash\\ngit add .\\ngit commit -m \"Your commit\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout your-branch\\n\\nnpm install\\n\`\`\`\\n\\n"
+            TEXT="🔄 Changes made in branch \`dev\`: 📦 **Dependencies updated!**\n\n"
+            TEXT+="Please save and update your branches before continuing:\n"
+            TEXT+="\`\`\`bash\ngit add .\ngit commit -m \"Your commit\"\ngit checkout dev\ngit pull origin dev\ngit checkout your-branch\n\nnpm install\n\`\`\`\n\n"
             TEXT+="📝 Last commit: $COMMIT_MESSAGE"
           else
-            TEXT="🔄 Changes made in branch \`dev\`.\\n\\n"
-            TEXT+="Please save and update your branches before continuing:\\n"
-            TEXT+="\`\`\`bash\\ngit add .\\ngit commit -m \"Your commit\"\\ngit checkout dev\\ngit pull origin dev\\ngit checkout your-branch\\n\`\`\`\\n\\n"
+            TEXT="🔄 Changes made in branch \`dev\`.\n\n"
+            TEXT+="Please save and update your branches before continuing:\n"
+            TEXT+="\`\`\`bash\ngit add .\ngit commit -m \"Your commit\"\ngit checkout dev\ngit pull origin dev\ngit checkout your-branch\n\`\`\`\n\n"
             TEXT+="📝 Last commit: $COMMIT_MESSAGE"
           fi
 
-          echo "msg<<EOF" >> $GITHUB_OUTPUT
-          echo "$TEXT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Use jq to safely format JSON
+          JSON_PAYLOAD=$(jq -n --arg msg "$TEXT" '{"content": $msg}')
+          echo "msg=$JSON_PAYLOAD" >> $GITHUB_OUTPUT
 
       - name: Send Discord notification
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"${{ steps.notify_msg.outputs.msg }}\"}" \
+          -d "${{ steps.notify_msg.outputs.msg }}" \
           $DISCORD_WEBHOOK_URL
 
       - name: Send Slack notification
@@ -60,5 +60,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"text\": \"${{ steps.notify_msg.outputs.msg }}\"}" \
+          -d "${{ steps.notify_msg.outputs.msg }}" \
           $SLACK_WEBHOOK_URL
