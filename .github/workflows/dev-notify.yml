@@ -1,4 +1,4 @@
-name: Notify Discord on Push
+name: Notify on push to dev
 
 on:
   push:
@@ -10,25 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Check for package changes
-        id: check
+      - name: Отправка уведомления в Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          if git diff --name-only HEAD^ HEAD | grep -E "package(-lock)?\.json"; then
-            echo "npm_install=true" >> $GITHUB_ENV
-          else
-            echo "npm_install=false" >> $GITHUB_ENV
-          fi
+          curl -H "Content-Type: application/json" \
+               -d "{\"content\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\"}" \
+               "$DISCORD_WEBHOOK_URL"
 
-      - name: Send notification to Discord
+      - name: Отправка уведомления в Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         run: |
-          if [ "$npm_install" == "true" ]; then
-            INSTALL_MSG="\nТакож виконайте команду: \`npm install\`"
-          else
-            INSTALL_MSG=""
-          fi
-          curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"Я вніс зміни в гілку **dev**. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`$INSTALL_MSG\"}" \
-          "${{ secrets.DISCORD_WEBHOOK_URL }}"
+          curl -X POST -H 'Content-type: application/json' \
+               --data "{\"text\": \"Внесені зміни в гілку dev. Будь ласка, перед продовженням роботи збережіть і оновіть свої гілки:\n\`\`\`bash\ngit add .\ngit commit -m \\\"Ваш коміт\\\"\ngit checkout dev\ngit pull origin dev\ngit checkout ваша-гілка\ngit merge dev\n\`\`\`\"}" \
+               "$SLACK_WEBHOOK_URL"
