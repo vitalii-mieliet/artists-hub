@@ -24,8 +24,11 @@
 }
 
 .artist-modal-album-img {
-    width: 272px;
+    border-radius: 16px;
+    width: 100%;
     height: 167px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .artist-modal-album-list {
@@ -58,6 +61,10 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    height: 32px;
 }
 
 .artist-modal-album-title {
@@ -75,6 +82,7 @@
     width: 272px;
     height: 634px;
     min-width: 250px;
+    background-color: var(--color-neutral-darker);
 }
 
 .artist-modal-album-name {
@@ -88,27 +96,64 @@
     font-weight: 600;
     font-size: 8px;
     line-height: 1.5;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 12px;
-    padding-right: 4px;
     display: flex;
     justify-content: space-between;
     align-content: center;
+    border-radius: 8px;
+    padding: 4px 11px 4px 12px;
+    width: 250px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
+.artist-modal-album-track-header-list-item:nth-child(1) {
+    text-align: left;
+    width: 60%;
+}
+
+.artist-modal-album-track-header-list-item:nth-child(2) {
+    text-align: center;
+    width: 20%;
+}
+
+.artist-modal-album-track-header-list-item:nth-child(3) {
+    text-align: right;
+    width: 20%; }
+
+
 .artist-modal-track-list {
-    padding-top: 11px;
-    padding-bottom: 11px;
-    padding-right: 11px;
-    padding-left: 12px;
+    width: 250px;
 }
 
 .artist-modal-track-list-item {
     display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 400;
     font-size: 12px;
     line-height: 1.5;
     gap: 16px;
+    border-radius: 8px;
+    min-height: 32px;
+    padding: 4px 11px 4px 12px;
 }
 
+.artist-modal-track-list-item-song {
+    text-align: left;
+    width: 60%;
+}
+
+.artist-modal-track-list-item-time {
+    text-align: center;
+    width: 30%;
+}
+
+.artist-modal-track-list-item-link {
+    text-align: right;
+    width: 10%;
+}
+
+.artist-modal-track-list-item:nth-child(even) {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
