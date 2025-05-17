@@ -30,8 +30,6 @@
     align-items: center;
     gap: 32px;
     margin-bottom: 48px;
-    padding: 0;
-    list-style: none;
 }
 
 .footer-nav-link {
@@ -68,8 +66,6 @@
     display: flex;
     gap: 32px;
     margin: 0;
-    padding: 0;
-    list-style: none;
 }
 
 .footer-social-link {
@@ -138,7 +134,6 @@
 /******** Desktop *******/
 
 @media screen and (min-width: 1440px) {
-
     .footer-social-icon {
         width: 24px;
         height: 24px;
