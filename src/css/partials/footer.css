@@ -12,8 +12,7 @@
 }
 
 .footer-logo {
-    margin: 0 82px;;
-    margin-bottom: 32px;
+    margin: 0 82px 32px;
 }
 
 .footer-logo-link {
@@ -42,7 +41,6 @@
 .footer-divider {
     border: 1px solid var(--color-scheme-1-border);
     width: 100%;
-    height: 0px;
     margin-bottom: 24px;
 }
 
@@ -68,5 +66,69 @@
 
 .footer-social-icon {
     fill: var(--color-scheme-1-text);
+    transition: transform 0.3s ease, fill 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
 }
 
+.footer-social-icon:hover {
+    transform: scale(1.15);
+    opacity: 0.8;
+    fill: var(--color-neutral-light);
+}
+
+/******** Tablet *******/
+
+@media screen and (min-width: 768px) {
+    .footer-wrapper {
+        padding: 80px 0;
+    }
+
+    .footer-logo {
+        margin: 0 auto 32px;
+    }
+
+    .footer-logo-icon {
+        display: block;
+        width: 116px;
+        height: 45px;
+    }
+    
+    .footer-nav {
+        flex-direction: row;
+        gap: 32px;
+        margin-bottom: 80px;
+    }
+    
+    .footer-divider {
+        margin-bottom: 32px;
+    }
+    
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+    
+    .footer-copyright {
+        margin: 0;
+    }
+    
+    .footer-social {
+        gap: 24px;
+    }
+    
+    .footer-social-icon {   
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/******** Desktop *******/
+
+@media screen and (min-width: 1440px) {
+
+    .footer-social-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
