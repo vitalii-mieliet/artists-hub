@@ -24,18 +24,20 @@
     fill: var(--color-affair);
 }
 
-.footer-nav {
+.footer-nav-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
-    margin-bottom: 48px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .footer-nav-link {
     font-weight: 600;
     font-size: 16px;
-
+    text-decoration: none;
 }
 
 .footer-divider {
@@ -58,10 +60,20 @@
     white-space: nowrap;
 }
 
-
 .footer-social {
     display: flex;
+}
+
+.footer-social-list {
+    display: flex;
     gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-social-link {
+    display: inline-flex;
 }
 
 .footer-social-icon {
@@ -75,6 +87,7 @@
     opacity: 0.8;
     fill: var(--color-neutral-light);
 }
+
 
 /******** Tablet *******/
 
@@ -92,32 +105,32 @@
         width: 116px;
         height: 45px;
     }
-    
-    .footer-nav {
+
+    .footer-nav-list {
         flex-direction: row;
         gap: 32px;
         margin-bottom: 80px;
     }
-    
+
     .footer-divider {
         margin-bottom: 32px;
     }
-    
+
     .footer-bottom {
         flex-direction: row;
         justify-content: space-between;
         gap: 0;
     }
-    
+
     .footer-copyright {
         margin: 0;
     }
-    
-    .footer-social {
+
+    .footer-social-list {
         gap: 24px;
     }
-    
-    .footer-social-icon {   
+
+    .footer-social-icon {
         width: 32px;
         height: 32px;
     }
@@ -126,7 +139,6 @@
 /******** Desktop *******/
 
 @media screen and (min-width: 1440px) {
-
     .footer-social-icon {
         width: 24px;
         height: 24px;
