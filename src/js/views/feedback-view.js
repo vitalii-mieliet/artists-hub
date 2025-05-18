@@ -59,10 +59,5 @@ export function renderFeedbackSlider(reviewsData) {
       prev.addEventListener('click', () => splideInstance.go('<'));
       next.addEventListener('click', () => splideInstance.go('>'));
     }
-
-    console.log(
-      'Splide оновлено. Кількість слайдів:',
-      document.querySelectorAll('.splide__slide').length
-    );
   });
 }

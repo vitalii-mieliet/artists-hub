@@ -62,35 +62,14 @@ export async function getGenreList() {
 }
 
 // API Responses
-// export async function artistsResponse(params) {
-//   try {
-//     const data = await getArtistList();
-//     console.log(data.artists);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// try {
-//   const data = await getArtistDetails('65ada227af9f6d155db46908');
-//   console.log(data);
-// } catch (error) {
-//   console.log(error);
-// }
-
-// try {
-//   const data = await getFeedbackList();
-//   console.log(data);
-// } catch (error) {
-//   console.log(error);
-// }
-
-// try {
-//   const data = await getGenreList();
-//   console.log(data);
-// } catch (error) {
-//   console.log(error);
-// }
+export async function handleGenres() {
+  try {
+    const data = await getGenreList();
+    console.log(data);
+  } catch (error) {
+    console.error('An error occurred while loading the data:', error);
+  }
+}
 
 // TODO:
 /*export class SoundWaveAPI {
