@@ -39,11 +39,6 @@ input:disabled {
   opacity: 0.6;
 }
 
-/* Utility classes */
-.hidden {
-  display: none;
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -119,4 +114,12 @@ input:disabled {
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+}
+
+/* Utility classes */
+.is-hidden {
+  display: none;
+}
+.no-scroll {
+  overflow: hidden;
 }
