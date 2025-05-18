@@ -1,16 +1,5 @@
 /************************** Mobile-first **************************/
 
-.backdrop-artist-modal {
-  padding-left: 16px;
-  padding-right: 16px;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-
 .container-artist-modal {
   border-radius: 16px;
   padding: 52px 8px;
@@ -204,11 +193,6 @@
 /************************** For Tablet **************************/
 
 @media screen and (min-width: 768px) {
-  .backdrop-artist-modal {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
   .container-artist-modal {
     padding: 64px 24px;
     width: 702px;
@@ -284,11 +268,6 @@
 /************************** For Desktop **************************/
 
 @media screen and (min-width: 1440px) {
-  .backdrop-artist-modal {
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-
   .container-artist-modal {
     padding: 64px;
     width: 1312px;
