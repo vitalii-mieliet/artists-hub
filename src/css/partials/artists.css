@@ -18,18 +18,25 @@
   gap: 64px;
 }
 
+.artist-img-wraper {
+  overflow: hidden;
+  object-fit: cover;
+}
+
 .artist-img {
+  width: 100%;
+  height: fit-content;
   border-radius: 16px;
 }
 
-.tags {
+.artist-genres-list {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
 }
 
-.tag {
+.artist-genres-list-item {
   border: 1px solid var(--opacity-white-20);
   border-radius: 6px;
   padding: 4px 10px;
@@ -80,20 +87,12 @@
 .load-more-btn {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 12px;
   padding: 10px 24px;
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 12px;
   height: 47px;
-  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 var(--opacity-white-5);
-  background: var(--color-affair);
   font-weight: 500;
 }
 
@@ -107,7 +106,7 @@
     gap: 32px;
   }
 
-  .tags {
+  .artist-genres-list {
     margin-top: 24px;
   }
 
@@ -137,6 +136,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
+
+  .artist-img-wraper {
+    width: 640px;
+    height: 393px;
+  }
+
   .load-more-btn {
     width: 170px;
   }
