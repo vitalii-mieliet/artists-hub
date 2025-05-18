@@ -1,3 +1,87 @@
-<section class="section">
-  <div class="container"><h2>Header</h2></div>
-</section>
+<header class="page-header">
+  <div class="container">
+    <nav class="header-nav">
+      <a
+        class="header-icon-logo"
+        href="./index.html"
+        aria-label="Go to homepage"
+      >
+        <svg
+          class="header-logo"
+          width="119"
+          height="51"
+          role="img"
+          aria-label="Company Logo"
+        >
+          <use href="/assets/svg/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+
+      <button
+        class="burger-btn js-mobile-menu"
+        type="button"
+        aria-label="Open mobile menu"
+      >
+        <svg
+          class="burger-icon"
+          width="24"
+          height="24"
+          role="img"
+          aria-hidden="true"
+        >
+          <use href="/assets/svg/sprite.svg#icon-burger-btn"></use>
+        </svg>
+      </button>
+
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#artists"
+            aria-label="Go to Artists section"
+            >Artists</a
+          >
+        </li>
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#about"
+            aria-label="Go to About Us section"
+            >About Us</a
+          >
+        </li>
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#reviews"
+            aria-label="Go to Reviews section"
+            >Reviews</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile menu and overlay -->
+  <div class="mobile-menu-overlay js-menu-overlay"></div>
+
+  <nav class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="./index.html" class="mobile-logo" aria-label="Go to homepage">
+        <svg class="mobile-logo-icon" width="119" height="51">
+          <use href="/assets/svg/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+      <button class="mobile-menu-close js-menu-close" aria-label="Close menu">
+        <svg class="icon icon-close" width="24" height="24">
+          <use href="/assets/svg/sprite.svg#icon-close-btn"></use>
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a class="mobile-nav-link" href="#artists">Artists</a></li>
+      <li><a class="mobile-nav-link" href="#about">About Us</a></li>
+      <li><a class="mobile-nav-link" href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+</header>
