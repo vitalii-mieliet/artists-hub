@@ -30,6 +30,29 @@
     fill: var(--color-white)
 }
 
+/******** Tablet *******/
+
+@media screen and (min-width: 768px) {
+    .burger-btn {
+        display: none;
+    }
+
+    .header-nav {
+        padding-top: 10.5px;
+        padding-bottom: 10.5px;
+    }
+    
+    .header-nav-list {
+        display: flex;
+        gap: 32px;   
+    }
+
+    .header-logo {
+        fill: var(--color-scheme-2-accent);
+    }
+}
+
+
 /******** Mobile menu and overlay *******/
 
 .mobile-menu-overlay {
@@ -46,13 +69,13 @@
     display: block;
 }
 
-.js-mobile-menu,
+.burger-btn,
 .mobile-menu {
     display: none;
 }
 
 @media (max-width: 767px) {
-    .js-mobile-menu {
+    .burger-btn {
         display: block;
         cursor: pointer;
         border: none;
