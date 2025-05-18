@@ -20,16 +20,18 @@
 
 .artist-img {
   border-radius: 16px;
+  width: 288px;
+  height: 177px;
 }
 
-.tags {
+.artist-genres-list {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
 }
 
-.tag {
+.artist-genres-list-item {
   border: 1px solid var(--opacity-white-20);
   border-radius: 6px;
   padding: 4px 10px;
@@ -107,7 +109,12 @@
     gap: 32px;
   }
 
-  .tags {
+  .artist-img {
+    width: 704px;
+    height: 432px;
+  }
+
+  .artist-genres-list {
     margin-top: 24px;
   }
 
@@ -137,6 +144,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
+
+  .artist-img {
+    width: 640px;
+    height: 393px;
+  }
+
   .load-more-btn {
     width: 170px;
   }
