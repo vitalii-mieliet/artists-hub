@@ -8,6 +8,7 @@ function toggleMenu() {
   overlay.classList.toggle('is-active', isOpen);
   burgerSpan.classList.toggle('is-closed', isOpen);
   mobileMenu.setAttribute('aria-hidden', !isOpen);
+  document.body.classList.toggle('no-scroll', isOpen);
 }
 
 btnBurger.addEventListener('click', toggleMenu);
