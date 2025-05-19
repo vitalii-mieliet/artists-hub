@@ -15,7 +15,7 @@
   margin-left: auto;
   margin-bottom: 4px;
   display: block;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, fill 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .artist-modal-close-svg {
@@ -185,11 +185,13 @@
 .artist-modal-track-list-item-link {
   text-align: right;
   width: 14%;
+  transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .artist-modal-track-list-item-link:hover {
   fill: var(--color-neutral-lightest);
   opacity: 0.6;
+  transform: scale(1.15);
 }
 
 .artist-modal-track-list-item-svg {
@@ -347,7 +349,7 @@
 }
 
 .scrollable::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 /*************** biography-scrollbar ***************/
 
