@@ -5,7 +5,7 @@ export function openModal(modalSelector) {
   if (!modal) return;
 
   activeModal = modal;
-  modal.classList.remove('is-hidden');
+  modal.classList.add('is-open');
   document.body.classList.add('scroll-block');
 
   modal.addEventListener('click', handleBackdropOrCloseClick);
@@ -15,7 +15,7 @@ export function openModal(modalSelector) {
 export function closeModal() {
   if (!activeModal) return;
 
-  activeModal.classList.add('is-hidden');
+  activeModal.classList.remove('is-open');
   document.body.classList.remove('scroll-block');
 
   activeModal.removeEventListener('click', handleBackdropOrCloseClick);

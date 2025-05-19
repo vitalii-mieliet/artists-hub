@@ -1,3 +1,6 @@
+#reviews-slider {
+  position: relative;
+}
 .reviews-custom-arrows {
   position: absolute;
   top: 35%;
@@ -7,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
-  pointer-events: none; /* дозволяє кліки тільки на кнопки */
+  pointer-events: none;
 }
 
 @media only screen and (min-width: 768px) {
@@ -30,7 +33,7 @@
   width: 48px;
   height: 48px;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--opacity-white-50);
   border-radius: 8px;
   padding: 12px;
   cursor: pointer;
@@ -106,63 +109,11 @@
   margin-bottom: 16px;
 }
 
-.splide__slide {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-
-  /* padding-bottom: 16px; */
-}
-
-/* @media only screen and (min-width: 1440px) {
-  .splide__track {
-    margin-bottom: 75px;
-  }
-} */
-
 @media only screen and (max-width: 767px) {
   .reviews-custom-arrows {
     display: none;
   }
 }
-
-/* .splide__pagination {
-  position: relative;
-} */
-
-/* .splide__pagination__page {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-white);
-  opacity: 0.2;
-  border-radius: 50%;
-  margin: 0 4px;
-  transition: opacity 0.3s ease;
-} */
-
-/* .splide__pagination__page.is-active {
-  opacity: 1;
-} */
-
-/* .splide .splide__pagination__page.is-active {
-  transform: scale(1);
-} */
-
-/* #reviews-slider .splide__pagination {
-  position: relative;
-} */
-
-/* .reviews-icon-stars {
-  fill: var(--color-white);
-} */
-
-/* .reviews-icon-rating {
-  fill: #fff;
-} */
-
-/* .reviews-icon-rating-gold {
-  fill: gold;
-} */
 
 .custom-pagination {
   display: flex;
@@ -183,12 +134,6 @@
   opacity: 0.2;
   transition: opacity 0.3s ease;
 }
-
-/* .pagination-btn.active {
-  background-color: var(--color-scheme-1-text);
-  opacity: 1;
-  transition: opacity 0.3s ease;
-} */
 
 .active {
   background-color: var(--color-scheme-1-text);
