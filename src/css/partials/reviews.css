@@ -1,3 +1,6 @@
+#reviews-slider {
+  position: relative;
+}
 .reviews-custom-arrows {
   position: absolute;
   top: 35%;
