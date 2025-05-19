@@ -55,6 +55,16 @@
   --color-scheme-3-accent: var(--color-white);
   --color-scheme-3-foreground: var(--color-affair-darkest);
   --color-error-red: #af0404;
+  --gradient-dark-bg-top: linear-gradient(
+    0deg,
+    rgba(35, 19, 43, 0) 0%,
+    #060307 100%
+  );
+  --gradient-dark-bg-btm: linear-gradient(
+    180deg,
+    rgba(35, 19, 43, 0) 0%,
+    #060307 100%
+  );
 }
 
 :root {

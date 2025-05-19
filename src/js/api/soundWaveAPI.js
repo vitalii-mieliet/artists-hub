@@ -6,6 +6,7 @@ const soundWaveAPI = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
 const PER_PAGE = 8;
 const ENDPOINTS = {
   ARTISTS: '/artists',

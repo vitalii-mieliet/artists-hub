@@ -1,4 +1,3 @@
-import { Splide } from '../libs';
 import { renderFeedbackSlider } from '../views/feedback-view';
 import { getFeedbackList } from '../api/soundWaveAPI';
 

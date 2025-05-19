@@ -1,4 +1,4 @@
-<div class="modal-backdrop js-modal-backdrop is-hidden" id="artist-modal">
+<div class="modal-backdrop js-modal-backdrop" id="artist-modal">
   <div class="container container-artist-modal">
     <button class="artist-modal-close-btn js-close-btn" type="button">
       <svg
@@ -13,11 +13,13 @@
 
     <h2 class="artist-modal-name">Unlike Pluto</h2>
     <div class="artist-modal-biography-field">
-      <img
-        class="artist-modal-album-img"
-        src="../assets/images/artist-detail-modal/desk-artist-modal-img.webp"
-        alt="description"
-      />
+      <div class="artist-modal-img-wrapper">
+        <img
+          class="artist-modal-album-img"
+          src="../assets/images/artist-detail-modal/desk-artist-modal-img.webp"
+          alt="description"
+        />
+      </div>
 
       <div class="artist-modal-album-list-wrapper">
         <ul class="artist-modal-album-list">
@@ -39,7 +41,9 @@
           </li>
           <li class="artist-modal-album-list-item biography-list-item-text">
             <p class="modal-album-list-item-title">Biography</p>
-            <p class="modal-album-list-item-value biography-paragraph">
+            <p
+              class="modal-album-list-item-value biography-paragraph scrollable"
+            >
               Armond Arabshahi, known by his stage name Unlike Pluto, is an
               American singer, songwriter, music producer, and former DJ. He is
               mainly known for his song "Everything Black", released under the
