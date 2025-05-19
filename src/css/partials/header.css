@@ -67,7 +67,7 @@
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 400ms ease-in-out;
     z-index: 999;
 }
 
@@ -97,7 +97,8 @@
         background-color: var(--color-scheme-1-background);
         opacity: 0;
         transform: scale(0.95);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: opacity 400ms ease-in-out,
+            transform 400ms ease-in-out;
         z-index: 1000;
         overflow-y: auto;
         margin: 0;
@@ -160,7 +161,7 @@
 .burger svg {
     height: 36px;
     transform: translate(-1px, -1px);
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 700ms ease-in-out;
 }
 
 .burger .line {
@@ -170,8 +171,8 @@
     stroke-linejoin: round;
     stroke-width: 1.75;
     transition:
-        stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
-        stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        stroke-dasharray 700ms ease-in-out,
+        stroke-dashoffset 700ms ease-in-out;
 }
 
 .burger .line-top-bottom {
@@ -180,9 +181,13 @@
 
 .is-closed.burger svg {
     transform: rotate(-45deg) translate(0);
+    transition: transform 700ms ease-in-out;
 }
 
 .is-closed.burger svg .line-top-bottom {
     stroke-dasharray: 20 300;
     stroke-dashoffset: -32.42;
+    transition:
+        stroke-dasharray 700ms ease-in-out,
+        stroke-dashoffset 700ms ease-in-out;
 }
