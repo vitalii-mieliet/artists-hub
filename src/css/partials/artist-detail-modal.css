@@ -37,14 +37,19 @@
   text-align: center;
 }
 
-.artist-modal-album-img {
+.artist-modal-img-wrapper {
   border-radius: 16px;
   width: 100%;
-  height: 167px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 16px;
-  margin-bottom: 32px;
+  /* margin-top: 16px;
+  margin-bottom: 32px; */
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.artist-modal-album-img {
+  object-fit: cover;
 }
 
 .artist-modal-album-list {
@@ -208,9 +213,9 @@
   }
 
   .artist-modal-album-img {
-    height: 402px;
-    width: 654px;
-    margin-top: 48px;
+    height: auto;
+    width: 100%;
+    /* margin-top: 48px; */
   }
 
   .artist-modal-album-list-wrapper {
@@ -233,6 +238,7 @@
   }
 
   .biography-paragraph {
+    overflow-y: auto;
     width: 654px;
   }
 
@@ -279,23 +285,29 @@
 
   .artist-modal-biography-field {
     display: flex;
-    width: 1184px;
     align-items: flex-start;
     gap: 32px;
     margin-bottom: 48px;
     margin-top: 48px;
   }
-
+  .artist-modal-img-wrapper,
+  .artist-modal-album-list-wrapper {
+    width: calc((100% - 32px) / 2);
+  }
+  /* .artist-modal-img-wrapper {
+    width: 50%;
+  }
   .artist-modal-album-img {
+  
     width: 576px;
-    height: 354px;
+    height: auto;
     margin: 0;
   }
 
   .artist-modal-album-list-wrapper {
     margin-bottom: 0;
     width: 576px;
-  }
+  } */
 
   .biography-paragraph {
     max-width: 576px;
