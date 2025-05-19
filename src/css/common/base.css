@@ -39,11 +39,6 @@ input:disabled {
   opacity: 0.6;
 }
 
-/* Utility classes */
-.hidden {
-  display: none;
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -119,4 +114,21 @@ input:disabled {
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+}
+
+/* Utility classes */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.is-hidden {
+  display: none;
+}
+.no-scroll {
+  overflow: hidden;
 }
