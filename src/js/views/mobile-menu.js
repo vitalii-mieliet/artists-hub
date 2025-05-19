@@ -1,24 +1,24 @@
 const mobileMenu = document.querySelector('.mobile-menu');
-const btnOpenMenu = document.querySelector('.js-mobile-menu');
-const btnCloseMenu = document.querySelector('.js-menu-close');
+const btnBurger = document.querySelector('.js-mobile-menu');
+const burgerSpan = btnBurger.querySelector('span.burger');
+const overlay = document.querySelector('.js-menu-overlay');
 
-function openMenu() {
-  mobileMenu.classList.add('is-open');
+function toggleMenu() {
+  const isOpen = mobileMenu.classList.toggle('is-open');
+  overlay.classList.toggle('is-active', isOpen);
+  burgerSpan.classList.toggle('is-closed', isOpen);
+  mobileMenu.setAttribute('aria-hidden', !isOpen);
 }
 
-function closeMenu() {
-  mobileMenu.classList.remove('is-open');
-}
+btnBurger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
 
-btnOpenMenu.onclick = openMenu;
-btnCloseMenu.onclick = closeMenu;
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeMenu();
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+    toggleMenu();
   }
 });
 
-mobileMenu.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.onclick = closeMenu;
+mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', toggleMenu);
 });
