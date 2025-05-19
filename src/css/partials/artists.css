@@ -29,6 +29,16 @@
   border-radius: 16px;
 }
 
+/* .artist-info-wrapper {
+  width: 640px;
+  height: 152px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+} */
+
 .artist-genres-list {
   display: flex;
   flex-wrap: wrap;
@@ -54,8 +64,11 @@
 }
 
 .artist-desc {
-  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-top: 8px;
 }
 
 .learn-more-btn {
