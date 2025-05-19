@@ -10,6 +10,18 @@
   pointer-events: none; /* дозволяє кліки тільки на кнопки */
 }
 
+@media only screen and (min-width: 768px) {
+  .reviews-custom-arrows {
+    top: 45%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .reviews-custom-arrows {
+    top: 30%;
+  }
+}
+
 .reviews-slider-icons {
   fill: var(--color-white);
 }
@@ -82,14 +94,13 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
-  /* margin-bottom: 16px; */
 }
 
-@media only screen and (min-width: 1440px) {
+/* @media only screen and (min-width: 1440px) {
   .reviews-author {
-    /* margin-bottom: 75px; */
+    margin-bottom: 75px;
   }
-}
+} */
 
 .splide__track {
   margin-bottom: 16px;
@@ -103,15 +114,9 @@
   /* padding-bottom: 16px; */
 }
 
-@media only screen and (min-width: 1440px) {
+/* @media only screen and (min-width: 1440px) {
   .splide__track {
-    /* margin-bottom: 75px; */
-  }
-}
-
-/* @media (max-width: 767px) {
-  .splide__arrow {
-    display: none !important;
+    margin-bottom: 75px;
   }
 } */
 
@@ -125,7 +130,7 @@
   position: relative;
 } */
 
-.splide__pagination__page {
+/* .splide__pagination__page {
   width: 8px;
   height: 8px;
   background-color: var(--color-white);
@@ -133,28 +138,60 @@
   border-radius: 50%;
   margin: 0 4px;
   transition: opacity 0.3s ease;
-}
+} */
 
-.splide__pagination__page.is-active {
+/* .splide__pagination__page.is-active {
   opacity: 1;
-}
+} */
 
-.splide .splide__pagination__page.is-active {
+/* .splide .splide__pagination__page.is-active {
   transform: scale(1);
-}
+} */
 
-#reviews-slider .splide__pagination {
+/* #reviews-slider .splide__pagination {
   position: relative;
-}
+} */
 
-.reviews-icon-stars {
+/* .reviews-icon-stars {
   fill: var(--color-white);
-}
+} */
 
-.reviews-icon-rating {
+/* .reviews-icon-rating {
   fill: #fff;
+} */
+
+/* .reviews-icon-rating-gold {
+  fill: gold;
+} */
+
+.custom-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
 }
 
-.reviews-icon-rating-gold {
-  fill: gold;
+.pagination-btn {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background-color: var(--color-scheme-1-text);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+/* .pagination-btn.active {
+  background-color: var(--color-scheme-1-text);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+} */
+
+.active {
+  background-color: var(--color-scheme-1-text);
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
