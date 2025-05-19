@@ -15,24 +15,39 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Skip if merge commit from PR
+        id: skip_check
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          echo "commit_message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+          if [[ "$COMMIT_MSG" == Merge\ pull\ request* ]]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Check if commit is a merge commit
+        if: steps.skip_check.outputs.skip == 'false'
         id: check_merge
         run: |
           PARENTS_COUNT=$(git rev-list --count --parents -n 1 HEAD)
           if [ "$PARENTS_COUNT" -gt 1 ]; then
-            echo "::set-output name=is_merge::true"
+            echo "is_merge=true" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=is_merge::false"
+            echo "is_merge=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Get last commit
+        if: steps.skip_check.outputs.skip == 'false'
         id: commits
         run: |
           git log -1 --pretty=format:"%h %an: %s" > commit.txt
-          echo "::set-output name=commits::$(cat commit.txt)"
+          echo "commits=$(cat commit.txt)" >> $GITHUB_OUTPUT
 
       - name: Send notification to Discord
-        if: steps.check_merge.outputs.is_merge == 'false'
+        if:
+          steps.skip_check.outputs.skip == 'false' &&
+          steps.check_merge.outputs.is_merge == 'false'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
@@ -41,7 +56,9 @@ jobs:
             "$DISCORD_WEBHOOK_URL"
 
       - name: Send notification to Slack
-        if: steps.check_merge.outputs.is_merge == 'false'
+        if:
+          steps.skip_check.outputs.skip == 'false' &&
+          steps.check_merge.outputs.is_merge == 'false'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         run: |

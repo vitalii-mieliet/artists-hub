@@ -1,3 +1,89 @@
-<section class="section">
-  <div class="container"><h2>Header</h2></div>
-</section>
+<header class="page-header">
+  <div class="container">
+    <nav class="header-nav">
+      <a
+        class="header-icon-logo"
+        href="./index.html"
+        aria-label="Go to homepage"
+      >
+        <svg
+          class="header-logo"
+          width="119"
+          height="51"
+          role="img"
+          aria-label="Company Logo"
+        >
+          <use href="/assets/svg/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+
+      <button
+        class="burger-btn js-mobile-menu"
+        type="button"
+        aria-label="Open mobile menu"
+      >
+        <span class="burger">
+          <svg
+            viewBox="0 0 32 32"
+            width="24"
+            height="24"
+            role="img"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              class="line line-top-bottom"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+            ></path>
+            <path class="line" d="M7 16 27 16"></path>
+          </svg>
+        </span>
+      </button>
+
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#artists"
+            aria-label="Go to Artists section"
+            >Artists</a
+          >
+        </li>
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#about-us"
+            aria-label="Go to About Us section"
+            >About Us</a
+          >
+        </li>
+        <li class="header-nav-item">
+          <a
+            class="header-nav-link"
+            href="#reviews"
+            aria-label="Go to Reviews section"
+            >Reviews</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile menu and overlay -->
+  <div class="mobile-menu-overlay js-menu-overlay"></div>
+
+  <nav class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="./index.html" class="mobile-logo" aria-label="Go to homepage">
+        <svg class="mobile-logo-icon" width="119" height="51">
+          <use href="/assets/svg/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a class="mobile-nav-link" href="#artists">Artists</a></li>
+      <li><a class="mobile-nav-link" href="#about-us">About Us</a></li>
+      <li><a class="mobile-nav-link" href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+</header>

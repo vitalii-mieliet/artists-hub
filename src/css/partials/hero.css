@@ -5,7 +5,7 @@
 }
 
 .hero-wrapper-up-gradient {
-  background: linear-gradient(0deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  background: var(--gradient-dark-bg-top);
   position: absolute;
   top: -1px;
   left: 0;
@@ -35,25 +35,26 @@
 }
 
 .hero-link-artist {
-  font-family: var(--font-family);
-  border-radius: 12px;
   padding: 10px 24px;
   width: 280px;
   height: 47px;
-  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 var(--opacity-white-5);
-  background: var(--color-affair);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
   margin-bottom: 64px;
 }
+
 .hero-icon {
-  fill: white;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+  fill: var(--color-white);
+}
+
+.hero-link-artist:hover .hero-icon,
+.hero-link-artist:focus .hero-icon {
+  transform: rotate(180deg);
 }
 
 .hero-photo-box {
@@ -80,7 +81,7 @@
   height: 170px;
   object-fit: cover;
   transform: translateY(-70px);
-  animation-duration: 20s;
+  animation-duration: 25s;
   animation-iteration-count: infinite;
   animation-name: hero-images-move-down;
   animation-timing-function: linear;
@@ -98,7 +99,7 @@
   height: 170px;
   object-fit: cover;
   transform: translateY(0px);
-  animation-duration: 23s;
+  animation-duration: 28s;
   animation-iteration-count: infinite;
   animation-name: hero-images-move-up;
   animation-timing-function: linear;
@@ -117,7 +118,7 @@
   pointer-events: none;
   width: 100%;
   height: 106px;
-  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  background: var(--gradient-dark-bg-btm);
 }
 
 /* Tablet: from 768px and up */
@@ -172,6 +173,13 @@
 
   .hero-wrapper-up-gradient {
     height: 80px;
+  }
+
+  .hero-link-artist {
+    border-radius: 12px;
+    padding: 10px 24px;
+    width: 206px;
+    height: 47px;
   }
 
   .hero-title {
