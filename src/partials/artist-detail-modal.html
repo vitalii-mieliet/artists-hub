@@ -1,6 +1,6 @@
-<div class="backdrop-artist-modal hidden">
+<div class="modal-backdrop js-modal-backdrop is-hidden" id="artist-modal">
   <div class="container container-artist-modal">
-    <button class="artist-modal-close-btn" type="button">
+    <button class="artist-modal-close-btn js-close-btn" type="button">
       <svg
         class="artist-modal-close-svg"
         width="32"
@@ -13,11 +13,13 @@
 
     <h2 class="artist-modal-name">Unlike Pluto</h2>
     <div class="artist-modal-biography-field">
-      <img
-        class="artist-modal-album-img"
-        src="../assets/images/artist-detail-modal/desk-artist-modal-img.webp"
-        alt="description"
-      />
+      <div class="artist-modal-img-wrapper">
+        <img
+          class="artist-modal-album-img"
+          src="../assets/images/artist-detail-modal/desk-artist-modal-img.webp"
+          alt="description"
+        />
+      </div>
 
       <div class="artist-modal-album-list-wrapper">
         <ul class="artist-modal-album-list">
