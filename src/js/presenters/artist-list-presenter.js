@@ -1,12 +1,26 @@
 import { getArtistList } from '../api/soundWaveAPI';
 import { handleArtistDetails } from './artist-details-presenter';
+import {
+  renderArtists,
+  toggleLoader,
+  toggleLoadMoreButton,
+  showError,
+} from '../views/artist-list-view';
+
+let currentPage = 1;
 
 export async function handleArtistsList() {
   try {
-    const data = await getArtistList();
-    console.log(data.artists);
+    toggleLoader(true);
+    const data = await getArtistList(currentPage);
+    renderArtists(data.artists);
+    const limit = Number(data.limit);
+    const totalPages = Math.ceil(data.totalArtists / limit);
+    toggleLoadMoreButton(currentPage < totalPages);
   } catch (error) {
-    console.error('An error occurred while loading the data:', error);
+    showError('Failed to load artists');
+  } finally {
+    toggleLoader(false);
   }
 }
 
@@ -20,3 +34,10 @@ document.addEventListener('click', e => {
     handleArtistDetails(artistId);
   }
 });
+
+document
+  .querySelector('.load-more-btn')
+  ?.addEventListener('click', async () => {
+    currentPage += 1;
+    await handleArtistsList();
+  });
