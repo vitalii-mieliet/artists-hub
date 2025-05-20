@@ -22,7 +22,6 @@
       </div>
 
       <div class="artist-modal-album-list-wrapper">
-        <!-- <div class="artist-modal-biography-wrapper"> -->
         <ul class="artist-modal-album-list">
           <li class="artist-modal-album-list-item">
             <p class="modal-album-list-item-title">Years active</p>
@@ -40,20 +39,22 @@
             <p class="modal-album-list-item-title">Country</p>
             <p class="modal-album-list-item-value">United States</p>
           </li>
-          <li class="artist-modal-album-list-item biography-list-item-text">
-            <p class="modal-album-list-item-title">Biography</p>
-            <p
-              class="modal-album-list-item-value biography-paragraph scrollable"
-            >
-              Armond Arabshahi, known by his stage name Unlike Pluto, is an
-              American singer, songwriter, music producer, and former DJ. He is
-              mainly known for his song "Everything Black", released under the
-              record label Monstercat in 2017, which he produced with
-              Philadelphia-based vocalist and DJ Mike Taylor.
-            </p>
-          </li>
         </ul>
-        <!-- </div> -->
+        <div class="artist-modal-bio-container">
+          <p class="artist-modal-bio-container-title">Biography</p>
+          <p
+            class="artist-modal-bio-container-value scrollable biography-wrapper collapsed"
+          >
+            Armond Arabshahi, known by his stage name Unlike Pluto, is an
+            American singer, songwriter, music producer, and former DJ. He is
+            mainly known for his song "Everything Black", released under the
+            record label Monstercat in 2017, which he produced with
+            Philadelphia-based vocalist and DJ Mike Taylor.
+          </p>
+          <button class="biography-toggle-btn" type="button">
+            Show more biography<span aria-hidden="true">↓</span>
+          </button>
+        </div>
 
         <ul class="artist-modal-genres-list">
           <li class="artist-modal-genres-list-item">Alternative</li>

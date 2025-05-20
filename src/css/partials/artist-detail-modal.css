@@ -37,6 +37,16 @@
   margin-bottom: 16px;
 }
 
+.artist-modal-biography-field {
+  width: 272px;
+  margin-bottom: 16px;
+}
+
+.artist-modal-album-img {
+  width: 100%;
+  object-fit: cover;
+}
+
 .artist-modal-img-wrapper {
   border-radius: 16px;
   width: 272px;
@@ -44,19 +54,13 @@
   margin-right: auto;
   margin-bottom: 32px;
   overflow: hidden;
-  object-fit: cover;
 }
 
 .artist-modal-album-list-wrapper {
-  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
-/* .artist-modal-biography-wrapper {
-  display: flex;
-} */
 
 .artist-modal-album-list {
   display: flex;
@@ -65,22 +69,48 @@
   width: 272px;
 }
 
+.artist-modal-bio-container-title,
 .modal-album-list-item-title {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
 }
 
+.artist-modal-bio-container-value,
 .modal-album-list-item-value {
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
 }
 
-/* .biography-paragraph {
-    height: 324px;
-    overflow-y: auto;
-} */
+/********* Show more\less biography button ********/
+.biography-wrapper {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Згорнутий стан */
+.biography-wrapper.collapsed {
+  max-height: 300px;
+  /* для планшета за замовчуванням */
+}
+
+/* Розгорнутий стан */
+.biography-wrapper.expanded {
+  max-height: none;
+}
+
+/* Кнопка */
+.biography-toggle-btn {
+  display: block;
+  margin: 12px auto 0;
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+/********* Show more\less biography button ********/
 
 .artist-modal-genres-list {
   display: flex;
@@ -223,38 +253,58 @@
     margin-bottom: 48px;
   }
 
-  .artist-modal-img-wrapper {
+  .artist-modal-biography-field {
     width: 654px;
-  }
-    
-  .artist-modal-album-img {
-    height: auto;
-    width: 100%;
-  }
-
-  .artist-modal-album-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     margin-bottom: 48px;
   }
 
-  .artist-modal-album-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 654px;
-    margin-bottom: 0;
-  }
-
-  .biography-list-item-text {
-    grid-column: 1 / -1;
-  }
-
-  .biography-paragraph {
-    /* overflow-y: auto; */
+  .artist-modal-img-wrapper {
     width: 654px;
   }
+
+  .artist-modal-album-list-wrapper {
+    gap: 24px;
+    width: 654px;
+  }
+  
+  .artist-modal-album-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 654px;
+  }
+
+  .artist-modal-album-list-item {
+    /* width: calc(50% - 12px); */
+    width: calc((100% - 24px) / 2);
+  }
+
+  .artist-modal-bio-container {
+    max-height: 135px;
+    width: 654px;
+    overflow: hidden;
+  }
+
+  .artist-modal-bio-container-title {
+    max-width: 654px;
+  }
+
+  .artist-modal-bio-container-value {
+    max-width: 654px;
+    max-height: 108px;
+  }
+
+/********* Show more\less biography button ********/
+    .biography-wrapper.collapsed {
+      max-height: 108px;
+      /* На планшетах показує ще менше */
+    }
+  
+    .biography-toggle-btn {
+      font-size: 16px;
+    }
+/********* Show more\less biography button ********/
 
   .artist-modal-genres-list {
     margin-bottom: 0;
@@ -298,28 +348,58 @@
   }
 
   .artist-modal-biography-field {
+    width: 1184px;
+    max-height: 374px;
     display: flex;
     align-items: flex-start;
     gap: 32px;
     margin-bottom: 48px;
-    margin-top: 48px;
   }
-  .artist-modal-img-wrapper,
-  .artist-modal-album-list-wrapper {
-    width: calc((100% - 32px) / 2);
+
+  .artist-modal-img-wrapper {
+    width: 576px;
+    max-height: 374px;
     margin-bottom: 0;
   }
 
-  .biography-paragraph {
-    max-width: 576px;
-    /* height: 135px; */
-    height: 80%;
+  .artist-modal-album-list-wrapper {
+    width: 576px;
+    /* max-height: 374px; */
   }
+  
+  .artist-modal-album-list {
+    max-height: 132px;
+  }
+
+  .artist-modal-bio-container {
+    width: 576px;
+    max-height: 162px;
+  }
+
+  .artist-modal-bio-container-title {
+    max-width: 576px;
+  }
+  
+  .artist-modal-bio-container-value {
+    max-width: 576px;
+    max-height: 135px;
+  }
+
+/********* Show more\less biography button ********/
+    .biography-wrapper {
+      max-height: none !important;
+      overflow-y: auto;
+    }
+  
+    .biography-toggle-btn {
+      display: none;
+    }
+/********* Show more\less biography button ********/
 
   /*************** biography-scrollbar ***************/
   .scrollable {
     overflow-y: auto;
-    max-height: 324px;
+    max-height: 135px;
   }
 
   .scrollable::-webkit-scrollbar {
@@ -361,9 +441,7 @@
     max-width: 576px;
   }
 
-  .artist-modal-album-list {
-    max-width: 576px;
-  }
+  
 
   .artist-modal-fetched-albums-wrapper {
     grid-template-columns: repeat(4, 1fr);
