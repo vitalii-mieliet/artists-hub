@@ -3,7 +3,6 @@ import { iziToast } from '../libs';
 const refs = {
   list: document.querySelector('.artists-list'),
   loader: document.querySelector('.loader'),
-  loadMoreBtn: document.querySelector('.load-more-btn'),
 };
 
 export function renderArtists(artists) {
@@ -34,7 +33,7 @@ export function renderArtists(artists) {
             Learn More
             <span>
               <svg class="learn-more-icon-caret-right" width="24" height="24">
-                <use href="./assets/svg/sprite.svg#icon-caret-right"></use>
+                <use href="/assets/svg/sprite.svg#icon-caret-right"></use>
               </svg>
             </span>
           </button>
@@ -65,7 +64,6 @@ export function showError(
   });
 }
 
-export function toggleLoadMoreButton(show) {
-  if (!refs.loadMoreBtn) return;
-  refs.loadMoreBtn.style.display = show ? 'flex' : 'none';
+export function clearArtists() {
+  if (refs.list) refs.list.innerHTML = '';
 }
