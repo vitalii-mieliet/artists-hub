@@ -6,12 +6,15 @@ export async function renderGenreFilter() {
 
   try {
     const genres = await getGenreList();
+    genres.unshift({ _id: 'default', genre: 'All genres', value: '' });
 
     const markup = genres
       .map(
         genre => `
         <label class="artist-custom-radio">
-          <input type="radio" name="sort-genre" value="${genre.genre}" />
+          <input type="radio" name="sort-genre" value="${
+            genre.value ?? genre.genre
+          }" />
           ${genre.genre}
           <span class="artist-radio-icon">
             <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">

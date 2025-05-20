@@ -15,12 +15,12 @@ const ENDPOINTS = {
   GENRES: '/genres',
 };
 
-export async function getArtistListByQuery(
+export async function getArtistListByQuery({
   currentPage = 1,
   query,
   sortName,
-  genre
-) {
+  genre,
+} = {}) {
   const params = {
     limit: PER_PAGE,
     page: currentPage,
@@ -35,15 +35,6 @@ export async function getArtistListByQuery(
     return response.data;
   } catch (error) {
     throw error;
-  }
-}
-
-export async function handleArtistsListByQuery() {
-  try {
-    const data = await getArtistListByQuery();
-    console.log(data);
-  } catch (error) {
-    console.error('An error occurred while loading the data:', error);
   }
 }
 

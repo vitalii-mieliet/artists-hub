@@ -9,6 +9,11 @@ const refs = {
 export function renderArtists(artists) {
   if (!refs.list) return;
 
+  if (!artists || artists.length === 0) {
+    refs.list.innerHTML = '<li class="artist-card">No artists found.</li>';
+    return;
+  }
+
   const markup = artists
     .map(
       ({
@@ -68,4 +73,27 @@ export function showError(
 export function toggleLoadMoreButton(show) {
   if (!refs.loadMoreBtn) return;
   refs.loadMoreBtn.style.display = show ? 'flex' : 'none';
+}
+
+export function getCurrentFilters() {
+  const query = document.querySelector('[data-artist-search]')?.value.trim();
+  const genre = document.querySelector(
+    'input[name="sort-genre"]:checked'
+  )?.value;
+
+  let sortName = document.querySelector('input[name="sort"]:checked')?.value;
+  if (sortName === 'default') {
+    sortName = undefined;
+  }
+
+  return Object.fromEntries(
+    Object.entries({ query, genre, sortName }).filter(
+      ([_, val]) => val !== '' && val !== undefined
+    )
+  );
+}
+
+export function clearArtistsList() {
+  if (!refs.list) return;
+  refs.list.innerHTML = '';
 }
