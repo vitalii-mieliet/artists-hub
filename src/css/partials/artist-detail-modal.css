@@ -10,11 +10,9 @@
 }
 
 .artist-modal-close-btn {
-  margin-top: 16px;
-  margin-right: 16px;
-  margin-left: auto;
-  margin-bottom: 4px;
-  display: block;
+  position: absolute;
+  top: 16px;
+  right: 16px;
   transition: transform 0.4s ease-in-out, fill 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
 }
@@ -36,28 +34,34 @@
   line-height: 1.3;
   letter-spacing: -0.01em;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 .artist-modal-img-wrapper {
   border-radius: 16px;
-  width: 100%;
+  width: 272px;
   margin-left: auto;
   margin-right: auto;
-  /* margin-top: 16px;
-  margin-bottom: 32px; */
+  margin-bottom: 32px;
   overflow: hidden;
   object-fit: cover;
 }
 
-.artist-modal-album-img {
-  object-fit: cover;
+.artist-modal-album-list-wrapper {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
+/* .artist-modal-biography-wrapper {
+  display: flex;
+} */
 
 .artist-modal-album-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 16px;
   width: 272px;
 }
 
@@ -82,7 +86,6 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
 }
 
 .artist-modal-genres-list-item {
@@ -147,12 +150,12 @@
 
 .artist-modal-album-track-header-list-item:nth-child(2) {
   text-align: center;
-  width: 26%;
+  width: 30%;
 }
 
 .artist-modal-album-track-header-list-item:nth-child(3) {
   text-align: right;
-  width: 14%;
+  width: 10%;
 }
 
 .artist-modal-track-list {
@@ -161,12 +164,11 @@
 
 .artist-modal-track-list-item {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  gap: 16px;
   border-radius: 8px;
   min-height: 32px;
   padding: 8px 2px 8px 12px;
@@ -174,17 +176,17 @@
 
 .artist-modal-track-list-item-song {
   text-align: left;
-  width: 60%;
+  width: 56%;
 }
 
 .artist-modal-track-list-item-time {
   text-align: center;
-  width: 26%;
+  width: 31%;
 }
 
 .artist-modal-track-list-item-link {
   text-align: right;
-  width: 14%;
+  width: 13%;
   transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
 }
@@ -213,18 +215,21 @@
   }
 
   .artist-modal-close-btn {
-    margin-right: 47px;
-    margin-bottom: 16px;
+    right: 47px;
   }
 
   .artist-modal-name {
     font-size: 32px;
+    margin-bottom: 48px;
   }
 
+  .artist-modal-img-wrapper {
+    width: 654px;
+  }
+    
   .artist-modal-album-img {
     height: auto;
     width: 100%;
-    /* margin-top: 48px; */
   }
 
   .artist-modal-album-list-wrapper {
@@ -289,7 +294,7 @@
   }
 
   .artist-modal-close-btn {
-    margin-right: 16px;
+    right: 16px;
   }
 
   .artist-modal-biography-field {

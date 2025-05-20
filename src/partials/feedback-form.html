@@ -1,0 +1,32 @@
+<div class="reviews-modal">
+  <div class="reviews-modal-content">
+    <button class="reviews-modal-close" type="button">
+      <svg width="32" height="32" class="reviews-modal-close-icon">
+        <use href="/assets/svg/sprite.svg#icon-close-btn"></use>
+      </svg>
+    </button>
+    <h2 class="reviews-modal-title">Submit feedback</h2>
+
+    <label for="name" class="reviews-modal-label">Name</label>
+    <input
+      type="text"
+      id="name"
+      class="reviews-modal-input"
+      placeholder="Emily"
+    />
+
+    <label for="message" class="reviews-modal-label">Message</label>
+    <textarea
+      id="message"
+      class="reviews-modal-textarea"
+      placeholder="Type your message..."
+    ></textarea>
+
+    <div class="reviews-modal-stars" id="starRating"></div>
+    <input type="hidden" id="ratingValue" name="rating" value="0" />
+
+    <button class="reviews-modal-button button-base" type="submit">
+      <span>Submit</span>
+    </button>
+  </div>
+</div>
