@@ -1,4 +1,4 @@
-export function renderArtistDetails(data) {
+export function renderArtistDetails2(data) {
   document.querySelector('.artist-modal-name').textContent = data.strArtist;
 
   document.querySelector('.artist-modal-album-img').src = data.strArtistThumb;
@@ -8,6 +8,7 @@ export function renderArtistDetails(data) {
     data.strBiographyEN;
 
   const infoItems = document.querySelectorAll('.artist-modal-album-list-item');
+
   infoItems[0].querySelector('.modal-album-list-item-value').textContent =
     formatYears(data.intFormedYear, data.intDiedYear);
   infoItems[1].querySelector('.modal-album-list-item-value').textContent =
@@ -18,6 +19,7 @@ export function renderArtistDetails(data) {
     data.strCountry;
 
   const genresList = document.querySelector('.artist-modal-genres-list');
+
   genresList.innerHTML = '';
   if (data.strLabel) {
     genresList.innerHTML = `<li class="artist-modal-genres-list-item">${data.strLabel}</li>`;
@@ -26,15 +28,67 @@ export function renderArtistDetails(data) {
   renderAlbums(data.tracksList);
 }
 
-function formatYears(start, end) {
-  return end ? `${start}–${end}` : `${start}–present`;
+export function renderArtistDetails(data) {
+  const infoWrapper = document.querySelector('.js-modal-artist-detail-info');
+
+  infoWrapper.innerHTML = '';
+  const infoMarkup = ` <h2 class="artist-modal-name">${data.strArtist}</h2>
+      <div class="artist-modal-biography-field">
+        <div class="artist-modal-img-wrapper">
+          <img
+            class="artist-modal-album-img"
+            src="${data.strArtistThumb}"
+            alt="${data.strArtist}"
+          />
+        </div>
+        <div class="artist-modal-album-list-wrapper">
+          <!-- <div class="artist-modal-biography-wrapper"> -->
+          <ul class="artist-modal-album-list">
+            <li class="artist-modal-album-list-item">
+              <p class="modal-album-list-item-title">Years active</p>
+              <p class="modal-album-list-item-value">${formatYears(
+                data.intFormedYear,
+                data.intDiedYear
+              )}</p>
+            </li>
+            <li class="artist-modal-album-list-item">
+              <p class="modal-album-list-item-title">Sex</p>
+              <p class="modal-album-list-item-value">${data.strGender}</p>
+            </li>
+            <li class="artist-modal-album-list-item">
+              <p class="modal-album-list-item-title">Members</p>
+              <p class="modal-album-list-item-value">${data.intMembers}</p>
+            </li>
+            <li class="artist-modal-album-list-item">
+              <p class="modal-album-list-item-title">Country</p>
+              <p class="modal-album-list-item-value">${data.strCountry}</p>
+            </li>
+            <li class="artist-modal-album-list-item biography-list-item-text">
+              <p class="modal-album-list-item-title">Biography</p>
+              <p
+                class="modal-album-list-item-value biography-paragraph scrollable"
+              >${data.strBiographyEN}
+              </p>
+            </li>
+          </ul>
+          <!-- </div> -->
+          <ul class="artist-modal-genres-list">
+            <li class="artist-modal-genres-list-item">Test</li>
+            <li class="artist-modal-genres-list-item">Test</li>
+            <li class="artist-modal-genres-list-item">Test</li>
+            <li class="artist-modal-genres-list-item">Test</li>
+          </ul>
+        </div>
+      </div>`;
+  infoWrapper.innerHTML = infoMarkup;
+  renderAlbums(data.tracksList);
 }
 
 function renderAlbums(tracks) {
   const albumsWrapper = document.querySelector(
     '.artist-modal-fetched-albums-wrapper'
   );
-  albumsWrapper.innerHTML = ''; // Очистити
+  albumsWrapper.innerHTML = '';
 
   const grouped = groupTracksByAlbum(tracks);
 
@@ -84,6 +138,10 @@ function groupTracksByAlbum(tracks) {
     acc[track.strAlbum].push(track);
     return acc;
   }, {});
+}
+
+function formatYears(start, end) {
+  return end ? `${start}–${end}` : `${start}–present`;
 }
 
 function formatTime(ms) {
