@@ -1,7 +1,7 @@
 <section class="section" id="reviews">
   <div class="container">
     <h2 class="visually-hidden">Section Reviews</h2>
-
+    <span class="loader is-hidden"></span>
     <div id="reviews-slider" class="splide">
       <div class="reviews-custom-arrows">
         <button
@@ -25,11 +25,18 @@
       </div>
 
       <div class="splide__track">
-        <ul class="splide__list reviews-list">
-          <!-- JS вставить <li class="splide__slide"> тут -->
-        </ul>
+        <ul class="splide__list reviews-list"></ul>
       </div>
     </div>
     <div class="custom-pagination"></div>
+    <div class="add-feedback-button-modal">
+      <button
+        type="button"
+        class="add-feedback-btn button-base"
+        id="addFeedbackBtn"
+      >
+        <span class="reviews-btn-add-modal">Leave feedback</span>
+      </button>
+    </div>
   </div>
 </section>
