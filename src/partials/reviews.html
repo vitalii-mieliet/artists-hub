@@ -1,7 +1,7 @@
 <section class="section" id="reviews">
   <div class="container">
     <h2 class="visually-hidden">Section Reviews</h2>
-
+    <span class="loader is-hidden"></span>
     <div id="reviews-slider" class="splide">
       <div class="reviews-custom-arrows">
         <button
@@ -10,7 +10,7 @@
           aria-label="Previous slide"
         >
           <svg width="24" height="24" class="reviews-slider-icons">
-            <use href="../assets/svg/sprite.svg#icon-left-arrow-alt"></use>
+            <use href="/assets/svg/sprite.svg#icon-left-arrow-alt"></use>
           </svg>
         </button>
         <button
@@ -19,115 +19,24 @@
           aria-label="Next slide"
         >
           <svg width="24" height="24" class="reviews-slider-icons">
-            <use href="../assets/svg/sprite.svg#icon-right-arrow-alt"></use>
+            <use href="/assets/svg/sprite.svg#icon-right-arrow-alt"></use>
           </svg>
         </button>
       </div>
 
       <div class="splide__track">
-        <ul class="splide__list reviews-list">
-          <!-- JS вставить <li class="splide__slide"> тут -->
-        </ul>
+        <ul class="splide__list reviews-list"></ul>
       </div>
     </div>
     <div class="custom-pagination"></div>
-  </div>
-  <!-- modal window -->
-  <div class="reviews-modal">
-    <div class="reviews-modal-content">
-      <div class="reviews-modal-close">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M22.8348 22.3639L22.3633 22.8353C22.103 23.0956 21.6809 23.0956 21.4205 22.8353L15.9994 17.4141L10.5782 22.8352C10.3179 23.0956 9.89577 23.0956 9.63542 22.8352L9.16401 22.3638C8.90366 22.1035 8.90366 21.6814 9.16401 21.421L14.5852 15.9999L9.16401 10.5787C8.90366 10.3184 8.90366 9.89626 9.16401 9.63591L9.63541 9.16451C9.89576 8.90416 10.3179 8.90416 10.5782 9.16451L15.9994 14.5857L21.4205 9.1645C21.6809 8.90415 22.103 8.90415 22.3633 9.1645L22.8348 9.6359C23.0951 9.89625 23.0951 10.3184 22.8348 10.5787L17.4136 15.9999L22.8348 21.421C23.0951 21.6814 23.0951 22.1035 22.8348 22.3639Z"
-            fill="white"
-          />
-        </svg>
-      </div>
-      <h2 class="reviews-modal-title">Submit feedback</h2>
-
-      <label for="name" class="reviews-modal-label">Name</label>
-      <input
-        type="text"
-        id="name"
-        class="reviews-modal-input"
-        placeholder="Emily"
-      />
-
-      <label for="message" class="reviews-modal-label">Message</label>
-      <textarea
-        id="message"
-        class="reviews-modal-textarea"
-        placeholder="Type your message..."
-      ></textarea>
-
-      <div class="reviews-modal-stars" id="starRating">
-        <span class="reviews-star" data-value="1">
-          <svg class="reviews-feedback-star" width="20" height="20">
-            <use href="../assets/svg/sprite.svg#icon-stars"></use>
-          </svg>
-        </span>
-        <span class="reviews-star" data-value="2">
-          <svg class="reviews-feedback-star" width="20" height="20">
-            <use href="../assets/svg/sprite.svg#icon-stars"></use>
-          </svg>
-        </span>
-        <span class="reviews-star" data-value="3">
-          <svg class="reviews-feedback-star" width="20" height="20">
-            <use href="../assets/svg/sprite.svg#icon-stars"></use>
-          </svg>
-        </span>
-        <span class="reviews-star" data-value="4">
-          <svg class="reviews-feedback-star" width="20" height="20">
-            <use href="../assets/svg/sprite.svg#icon-stars"></use>
-          </svg>
-        </span>
-        <span class="reviews-star" data-value="5">
-          <svg class="reviews-feedback-star" width="20" height="20">
-            <use href="../assets/svg/sprite.svg#icon-stars"></use>
-          </svg>
-        </span>
-      </div>
-      <input type="hidden" id="ratingValue" name="rating" value="0" />
-
-      <button class="reviews-modal-button" type="submit">Submit</button>
+    <div class="add-feedback-button-modal">
+      <button
+        type="button"
+        class="add-feedback-btn button-base"
+        id="addFeedbackBtn"
+      >
+        <span class="reviews-btn-add-modal">Leave feedback</span>
+      </button>
     </div>
   </div>
 </section>
-<script>
-  const stars = document.querySelectorAll('.reviews-star');
-  const ratingInput = document.getElementById('ratingValue');
-  let selectedRating = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('mouseover', () => {
-      const hoverValue = +star.dataset.value;
-      updateStars(hoverValue, 'hovered');
-    });
-
-    star.addEventListener('mouseout', () => {
-      updateStars(selectedRating, 'selected');
-    });
-
-    star.addEventListener('click', () => {
-      selectedRating = +star.dataset.value;
-      ratingInput.value = selectedRating;
-      updateStars(selectedRating, 'selected');
-    });
-  });
-
-  function updateStars(value, className) {
-    stars.forEach(star => {
-      const starValue = +star.dataset.value;
-      star.classList.remove('hovered', 'selected');
-      if (starValue <= value) {
-        star.classList.add(className);
-      }
-    });
-  }
-</script>

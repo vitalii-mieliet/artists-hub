@@ -1,193 +1,198 @@
 /******** Mobile *******/
 
-.header {
-    background-color: var(--color-scheme-1-background);
+.page-header .container {
+  display: flex;
+  align-items: center;
 }
 
-.page-header .container {
-    display: flex;
-    align-items: center;
-}
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 920;
+    background-color: var(--color-scheme-1-background);
+ }
 
 .header-nav {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: space-between;
-    padding-top: 6.5px;
-    padding-bottom: 6.5px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding-top: 6.5px;
+  padding-bottom: 6.5px;
 }
 
 .header-logo {
-    fill: var(--color-affair);
+  fill: var(--color-affair);
 }
 
 .header-nav-list {
-    display: none;
+  display: none;
 }
 
 .burger-btn {
-    fill: var(--color-white);
-    position: relative;
-    z-index: 1100;
-    cursor: pointer;
+  fill: var(--color-white);
+  position: relative;
+  z-index: 910;
+  cursor: pointer;
+
 }
 
 /******** Tablet *******/
 
 @media screen and (min-width: 768px) {
-    .burger-btn.button{
-        display: none;
-    }
+.page-header .container {
+    padding-left: 64px;
+    padding-right: 64px;
 
-    .header-nav {
-        padding-top: 10.5px;
-        padding-bottom: 10.5px;
-    }
-    
-    .header-nav-list {
-        display: flex;
-        gap: 32px;   
-    }
-
-    .header-logo {
-        fill: var(--color-scheme-2-accent);
-    }
 }
 
+  .burger-btn.button {
+    display: none;
+  }
+
+  .header-nav {
+    padding-top: 10.5px;
+    padding-bottom: 10.5px;
+  }
+
+  .header-nav-link {
+    font-size: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .header-nav-list {
+    display: flex;
+    gap: 32px;
+  }
+
+  .header-logo {
+    fill: var(--color-scheme-2-accent);
+  }
+
+  .header-nav-link:hover,
+  .header-nav-link:focus {
+    color: var(--color-affair);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
 
 /******** Mobile menu and overlay *******/
 
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-     width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 400ms ease-in-out;
-    z-index: 999;
-}
-
 .mobile-menu-overlay.is-active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .burger-btn,
 .mobile-menu {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 767px) {
-    .burger-btn {
-        display: block;
-        cursor: pointer;
-        border: none;
-    }
+  .burger-btn {
+    display: block;
+    cursor: pointer;
+    border: none;
+  }
 
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--color-scheme-1-background);
-        opacity: 0;
-        transform: scale(0.95);
-        transition: opacity 400ms ease-in-out,
-            transform 400ms ease-in-out;
-        z-index: 1000;
-        overflow-y: auto;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        pointer-events: none;
-    }
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-scheme-1-background);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+    z-index: 900;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+  }
 
-    .mobile-menu.is-open {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-    }
+  .mobile-menu.is-open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
 
-    .mobile-menu-header {
-        width: 100%;
-        max-width: 390px; 
-        padding: 7px 20px;  
-        margin: 0 auto 52px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 64px;
-        box-sizing: border-box;
-    }
-    
-    
-    .icon-close  { 
-        fill: var(--color-white)   
-    }
+  .mobile-menu-header {
+    width: 100%;
+    max-width: 320px;
+    padding: 0px 12px 0px 20px;
+    margin: 0 auto 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    box-sizing: border-box;
+  }
 
-    .mobile-nav-list li {
-        padding-bottom: 32px;
-        text-align: center;
-    }
+  .icon-close {
+    fill: var(--color-white);
+  }
 
-    .mobile-nav-link {
-        font-weight: 500;
-        font-size: 26px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+  .mobile-nav-list li {
+    padding-bottom: 32px;
+    text-align: center;
+  }
 
-    .mobile-logo-icon {
-        fill: var(--color-affair);
-    }
+  .mobile-nav-link {
+    font-weight: 500;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 80px;
+  }
+
+  .mobile-logo-icon {
+    fill: var(--color-affair);
+  }
 }
 
 /* icon-burger */
 
 .burger {
-    scale: 1.3;
-    height: 34px;
+  scale: 1.3;
+  height: 34px;
 }
 
 .burger svg {
-    height: 36px;
-    transform: translate(-1px, -1px);
-    transition: transform 700ms ease-in-out;
+  height: 36px;
+  transform: translate(-1px, -1px);
+  transition: transform 700ms ease-in-out;
 }
 
 .burger .line {
-    fill: none;
-    stroke: white;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.75;
-    transition:
-        stroke-dasharray 700ms ease-in-out,
-        stroke-dashoffset 700ms ease-in-out;
+  fill: none;
+  stroke: var(--color-white);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+  transition: stroke-dasharray 700ms ease-in-out,
+    stroke-dashoffset 700ms ease-in-out;
 }
 
 .burger .line-top-bottom {
-    stroke-dasharray: 12 63;
+  stroke-dasharray: 12 63;
 }
 
 .is-closed.burger svg {
-    transform: rotate(-45deg) translate(0);
-    transition: transform 700ms ease-in-out;
+  transform: rotate(-45deg) translate(0);
+  transition: transform 700ms ease-in-out;
 }
 
 .is-closed.burger svg .line-top-bottom {
-    stroke-dasharray: 20 300;
-    stroke-dashoffset: -32.42;
-    transition:
-        stroke-dasharray 700ms ease-in-out,
-        stroke-dashoffset 700ms ease-in-out;
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+  transition: stroke-dasharray 700ms ease-in-out,
+    stroke-dashoffset 700ms ease-in-out;
 }

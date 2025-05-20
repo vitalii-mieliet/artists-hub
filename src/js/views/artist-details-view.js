@@ -58,13 +58,17 @@ function renderAlbums(tracks) {
               <p class="artist-modal-track-list-item-time">${formatTime(
                 track.intDuration
               )}</p>
-              <a class="artist-modal-track-list-item-link" href="${
-                track.movie || '#'
-              }" target="_blank">
-                <svg class="artist-modal-track-list-item-svg" width="24" height="24" aria-hidden="true">
-                  <use href="../assets/svg/sprite.svg#icon-youtube"></use>
-                </svg>
-              </a>
+              ${
+                track.movie
+                  ? `
+                <a class="artist-modal-track-list-item-link" href="${track.movie}" target="_blank">
+                  <svg class="artist-modal-track-list-item-svg" width="24" height="24" aria-hidden="true">
+                    <use href="../assets/svg/sprite.svg#icon-youtube"></use>
+                  </svg>
+                </a>
+              `
+                  : ''
+              }
             </li>`
             )
             .join('')}
