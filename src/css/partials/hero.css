@@ -42,6 +42,7 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
+  margin-bottom: 64px;
 }
 
 .hero-icon {
@@ -66,10 +67,6 @@
   align-items: center;
   gap: 16px;
   overflow: hidden;
-}
-
-.hero-box-wrapper-tittle {
-  margin-bottom: 64px;
 }
 
 .hero-column-up {
@@ -141,7 +138,7 @@
     margin-bottom: 32px;
   }
 
-  .hero-box-wrapper-tittle {
+  .hero-link-artist {
     margin-bottom: 32px;
   }
 
@@ -195,7 +192,6 @@
   }
 
   .hero-box-wrapper-tittle {
-    margin: 0;
     padding: 0px 80px 0px 0px;
     width: 671px;
     display: flex;

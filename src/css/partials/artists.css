@@ -145,19 +145,14 @@
   }
 
   .artists-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    display: flex;
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr); */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
 
   .artist-img-wraper {
-    width: 472px;
-    height: 290px;
-    /* width: 640px;
-    height: 393px; */
+    width: 640px;
+    height: 393px;
   }
 
   .load-more-btn {
