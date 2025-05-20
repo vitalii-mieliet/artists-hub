@@ -76,4 +76,30 @@ document.addEventListener('DOMContentLoaded', () => {
       svg?.classList.remove('rotated');
     });
   }
+
+  const resetBtn = document.querySelector('.artist-reset-filters');
+
+  resetBtn?.addEventListener('click', () => {
+    // Очистити інпут пошуку
+    const searchInput = document.querySelector('[data-artist-search]');
+    if (searchInput) {
+      searchInput.value = '';
+    }
+
+    // Скинути вибір жанру (встановити перший — All genres)
+    const genreInputs = document.querySelectorAll('input[name="sort-genre"]');
+    if (genreInputs.length) {
+      genreInputs.forEach(i => (i.checked = false));
+      genreInputs[0].checked = true;
+    }
+
+    // Скинути сортування (встановити перший — Default)
+    const sortInputs = document.querySelectorAll('input[name="sort"]');
+    if (sortInputs.length) {
+      sortInputs.forEach(i => (i.checked = false));
+      sortInputs[0].checked = true;
+    }
+
+    handleArtistsListByQuery(); // 🔁 Оновлюємо список
+  });
 });
