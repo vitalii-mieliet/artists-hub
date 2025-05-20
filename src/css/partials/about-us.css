@@ -85,7 +85,7 @@
   }
 
   .about-us-image {
-    height: 664px;
+    height: auto;
   }
 
   .about-us-container svg {
@@ -93,7 +93,9 @@
   }
 
   .about-us-container {
-    width: 640px;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 640px;
   }
 
   .about-us-title {
