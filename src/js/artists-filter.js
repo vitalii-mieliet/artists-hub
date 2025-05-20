@@ -13,10 +13,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   modalBox?.addEventListener('change', e => {
     const target = e.target;
-    if (target.matches('input[type="radio"]')) {
-      closeAllMenus();
-      handleArtistsListByQuery();
+    if (!target.matches('input[type="radio"]')) return;
+
+    const type =
+      target.name === 'sort'
+        ? 'sort'
+        : target.name === 'sort-genre'
+        ? 'genre'
+        : null;
+    if (!type) return;
+
+    let valueLabel;
+
+    if (type === 'sort') {
+      // беремо текст з label (наприклад, A-Z)
+      valueLabel = target.closest('label')?.textContent.trim() || 'Default';
+    } else if (type === 'genre') {
+      // беремо значення з value або "All"
+      valueLabel = target.value || 'All';
     }
+
+    const label = document.querySelector(`[data-type-value="${type}"]`);
+    if (label) {
+      label.textContent = valueLabel;
+    }
+
+    closeAllMenus();
+    handleArtistsListByQuery();
   });
 
   searchBtn?.addEventListener('click', e => {
