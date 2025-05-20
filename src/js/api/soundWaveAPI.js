@@ -15,6 +15,38 @@ const ENDPOINTS = {
   GENRES: '/genres',
 };
 
+export async function getArtistListByQuery(
+  currentPage = 1,
+  query,
+  sortName,
+  genre
+) {
+  const params = {
+    limit: PER_PAGE,
+    page: currentPage,
+  };
+
+  if (query) params.name = query;
+  if (sortName) params.sortName = sortName;
+  if (genre) params.genre = genre;
+
+  try {
+    const response = await soundWaveAPI.get(ENDPOINTS.ARTISTS, { params });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function handleArtistsListByQuery() {
+  try {
+    const data = await getArtistListByQuery();
+    console.log(data);
+  } catch (error) {
+    console.error('An error occurred while loading the data:', error);
+  }
+}
+
 //
 export async function getArtistList(currentPage = 1) {
   const params = {
@@ -63,39 +95,8 @@ export async function getGenreList() {
 }
 
 // API Responses
-export async function handleGenres() {
-  try {
-    const data = await getGenreList();
-    console.log(data);
-  } catch (error) {
-    console.error('An error occurred while loading the data:', error);
-  }
-}
 
 // FIlter
-
-export async function getArtistListByQuery(currentPage = 1) {
-  const params = {
-    limit: PER_PAGE,
-    page: currentPage,
-  };
-
-  try {
-    const response = await soundWaveAPI.get(ENDPOINTS.ARTISTS, { params });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function handleArtistsListByQuery() {
-  try {
-    const data = await getGenreList();
-    console.log(data);
-  } catch (error) {
-    console.error('An error occurred while loading the data:', error);
-  }
-}
 
 // TODO:
 /*export class SoundWaveAPI {
