@@ -132,6 +132,16 @@
   transition: border-radius 0.3s ease-in-out;
 }
 
+.artist-reset-filters {
+  border: 1px solid var(--opacity-white-20);
+  border-radius: 12px;
+  padding: 8px 12px;
+  text-align: center;
+  /* height: 43px; */
+
+  transition: border-radius 0.3s ease-in-out;
+}
+
 .artist-sort-name.active-filter {
   border-radius: 12px 12px 0 0;
 }
@@ -158,6 +168,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 12px;
 }
 
 .artist-custom-radio {
