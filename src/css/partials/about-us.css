@@ -85,12 +85,15 @@
   }
 
   .about-us-image {
-    width: 1312px;
     height: 664px;
   }
 
   .about-us-container svg {
     margin-bottom: 24px;
+  }
+
+  .about-us-container {
+    width: 640px;
   }
 
   .about-us-title {
