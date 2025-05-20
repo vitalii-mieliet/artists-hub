@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       toggleSections.forEach(sec => sec.classList.remove('open'));
       toggleBtns.forEach(b => {
-        b.classList.remove('active');
+        b.classList.remove('active-filter');
         const svg = b.querySelector('svg');
         svg?.classList.remove('rotated');
       });
 
       if (!isOpen) {
         section.classList.add('open');
-        btn.classList.add('active');
+        btn.classList.add('active-filter');
         icon?.classList.add('rotated');
       }
     });
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleSections.forEach(section => section.classList.remove('open'));
     toggleBtns.forEach(btn => {
-      btn.classList.remove('active');
+      btn.classList.remove('active-filter');
       const svg = btn.querySelector('svg');
       svg?.classList.remove('rotated');
     });

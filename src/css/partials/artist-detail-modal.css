@@ -147,12 +147,12 @@
 
 .artist-modal-album-track-header-list-item:nth-child(2) {
   text-align: center;
-  width: 26%;
+  width: 30%;
 }
 
 .artist-modal-album-track-header-list-item:nth-child(3) {
   text-align: right;
-  width: 14%;
+  width: 10%;
 }
 
 .artist-modal-track-list {
@@ -161,12 +161,11 @@
 
 .artist-modal-track-list-item {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  gap: 16px;
   border-radius: 8px;
   min-height: 32px;
   padding: 8px 2px 8px 12px;
@@ -174,17 +173,17 @@
 
 .artist-modal-track-list-item-song {
   text-align: left;
-  width: 60%;
+  width: 56%;
 }
 
 .artist-modal-track-list-item-time {
   text-align: center;
-  width: 26%;
+  width: 31%;
 }
 
 .artist-modal-track-list-item-link {
   text-align: right;
-  width: 14%;
+  width: 13%;
   transition: transform 0.3s ease-in-out, fill 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
 }
