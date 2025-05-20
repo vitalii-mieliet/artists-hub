@@ -72,6 +72,31 @@ export async function handleGenres() {
   }
 }
 
+// FIlter
+
+export async function getArtistListByQuery(currentPage = 1) {
+  const params = {
+    limit: PER_PAGE,
+    page: currentPage,
+  };
+
+  try {
+    const response = await soundWaveAPI.get(ENDPOINTS.ARTISTS, { params });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function handleArtistsListByQuery() {
+  try {
+    const data = await getGenreList();
+    console.log(data);
+  } catch (error) {
+    console.error('An error occurred while loading the data:', error);
+  }
+}
+
 // TODO:
 /*export class SoundWaveAPI {
   #query = '';
