@@ -6,7 +6,8 @@ let paginationBaseIndex = 0;
 function generateStarSVG(rating) {
   const percent = Math.min(100, (rating / 5) * 100);
   const maskId = `starMask-${Math.random().toString(36).substr(2, 9)}`;
-  const starPath = `M12 2l3.09 6.26L22 9.27l-5.18 5.05L17.91 22 12 18.56 6.09 22l1.18-7.68L2 9.27l6.91-1.01L12 2z`;
+  // const starPath = `M12 2l3.09 6.26L22 9.27l-5.18 5.05L17.91 22 12 18.56 6.09 22l1.18-7.68L2 9.27l6.91-1.01L12 2z`;
+  const starPath = `M9.07 1.318c.345-.817 1.515-.817 1.86 0l2.028 4.819c.145.344.473.58.849.609l5.266.417c.892.07 1.254 1.17.574 1.746l-4.012 3.395a.987.987 0 0 0-.325.986l1.226 5.077c.208.86-.74 1.54-1.503 1.079l-4.508-2.72a1.017 1.017 0 0 0-1.05 0l-4.508 2.72c-.764.46-1.711-.22-1.503-1.08l1.225-5.076a.987.987 0 0 0-.324-.986L.353 8.91c-.68-.575-.318-1.675.574-1.746l5.266-.417c.376-.03.704-.265.849-.61l2.029-4.818Z`;
 
   return `
     <svg class="reviews-stars-svg" width="120" height="24" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg">

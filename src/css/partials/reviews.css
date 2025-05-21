@@ -114,12 +114,6 @@
   color: var(--color-white);
 }
 
-/* @media only screen and (min-width: 1440px) {
-  .reviews-author {
-    margin-bottom: 75px;
-  }
-} */
-
 .splide__track {
   margin-bottom: 16px;
 }
@@ -168,8 +162,6 @@
   height: 100%;
   top: 0;
   left: 0;
-  /* right: 0; */
-  /* bottom: 0; */
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 1000;
   font-family: var(--second-family);
@@ -220,12 +212,12 @@
   margin-bottom: 32px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
+/* 
 .reviews-modal-input:focus,
 .reviews-modal-textarea:focus {
   border-color: var(--color-affair);
-  box-shadow: var(--color-affair-light);
-}
+  box-shadow: 0 4px 8px 0 var(--color-affair-light);
+} */
 
 .reviews-modal-textarea {
   width: 100%;
@@ -287,11 +279,17 @@
   right: 16px;
   top: 16px;
   cursor: pointer;
+  transition: transform 0.4s ease-in-out, fill 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 
 .reviews-modal-close-icon {
   fill: var(--color-white);
   transition: fill 0.3s ease-in-out;
+}
+
+.reviews-modal-close-icon:hover {
+  transform: rotate(180deg);
 }
 
 .reviews-modal-close:hover svg {
@@ -307,6 +305,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }
 
 .add-feedback-btn {
@@ -451,4 +450,8 @@
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.add-feedback-btn.button-base {
+  display: none;
 }
