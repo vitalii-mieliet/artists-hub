@@ -3,7 +3,6 @@ import { iziToast } from '../libs';
 const refs = {
   list: document.querySelector('.artists-list'),
   loader: document.querySelector('.loader'),
-  loadMoreBtn: document.querySelector('.load-more-btn'),
 };
 
 export function renderArtists(artists) {
@@ -30,14 +29,18 @@ export function renderArtists(artists) {
           </ul>
           <h3 class="artist-name">${strArtist}</h3>
           <p class="artist-desc">${strBiographyEN}</p>
-          <button class="learn-more-btn js-learn-more-btn" data-artist-id="${_id}">
-            Learn More
-            <span>
-              <svg class="learn-more-icon-caret-right" width="24" height="24">
-                <use href="./assets/svg/sprite.svg#icon-caret-right"></use>
-              </svg>
-            </span>
-          </button>
+          <button
+  class="learn-more-btn js-learn-more-btn"
+  data-artist-id="${_id}"
+  data-genres='${JSON.stringify(genres)}'
+>
+  Learn More
+  <span>
+    <svg class="learn-more-icon-caret-right" width="24" height="24">
+      <use href="/assets/svg/sprite.svg#icon-caret-right"></use>
+    </svg>
+  </span>
+</button>
         </li>`;
       }
     )
@@ -65,7 +68,6 @@ export function showError(
   });
 }
 
-export function toggleLoadMoreButton(show) {
-  if (!refs.loadMoreBtn) return;
-  refs.loadMoreBtn.style.display = show ? 'flex' : 'none';
+export function clearArtists() {
+  if (refs.list) refs.list.innerHTML = '';
 }

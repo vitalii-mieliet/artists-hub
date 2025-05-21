@@ -139,8 +139,12 @@
   }
 
   .mobile-nav-list li {
-    padding-bottom: 32px;
+    margin-bottom: 32px;
     text-align: center;
+  }
+
+  .mobile-nav-list li:last-child {
+    margin-bottom: 0; 
   }
 
   .mobile-nav-link {
