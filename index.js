@@ -79,7 +79,7 @@ import{a as O,i as _,P as R,S as F}from"./assets/vendor-SJpk5S-B.js";(function()
   Learn More
   <span>
     <svg class="learn-more-icon-caret-right" width="24" height="24">
-      <use href="/assets/svg/sprite.svg#icon-caret-right"></use>
+      <use href="/img/svg/sprite.svg#icon-caret-right"></use>
     </svg>
   </span>
 </button>
