@@ -41,6 +41,7 @@ export async function getArtistDetails(id) {
 
 export async function getFeedbackList(currentPage = 1) {
   const params = {
+    limit: 20,
     page: currentPage,
   };
 
@@ -58,16 +59,6 @@ export async function getGenreList() {
     return response.data;
   } catch (error) {
     throw error;
-  }
-}
-
-// API Responses
-export async function handleGenres() {
-  try {
-    const data = await getGenreList();
-    console.log(data);
-  } catch (error) {
-    console.error('An error occurred while loading the data:', error);
   }
 }
 
