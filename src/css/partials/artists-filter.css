@@ -272,7 +272,7 @@
     margin-top: 60px;
     display: flex;
     gap: 32px;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   /* 
   .artist-img {
