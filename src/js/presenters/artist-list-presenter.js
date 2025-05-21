@@ -10,12 +10,15 @@ import {
 import { createPagination } from '../pagination';
 import { hideLoader, showLoader } from '../utils/loader';
 
-let pagination;
+let pagination = null;
+let previousFilters = '';
 
 export async function fetchAndRenderArtists(page = 1) {
   showLoader();
   try {
     const filters = getCurrentFilters();
+    const filtersKey = JSON.stringify(filters); // унікальний ключ фільтрів
+
     const data = await getArtistListByQuery({ currentPage: page, ...filters });
 
     clearArtists();
@@ -24,17 +27,28 @@ export async function fetchAndRenderArtists(page = 1) {
     const limit = Number(data.limit);
     const total = Number(data.totalArtists);
 
-    // 🔥 ЗНИЩУЄМО І СТВОРЮЄМО ПАГІНАЦІЮ КОЖЕН РАЗ
-    if (pagination) {
-      pagination.destroy?.();
-      pagination = null;
+    // 🔁 перевірка: чи змінилися фільтри
+    const filtersChanged = filtersKey !== previousFilters;
+
+    if (filtersChanged) {
+      pagination?.destroy?.(); // знищити стару пагінацію
+      pagination = createPagination({
+        totalItems: total,
+        itemsPerPage: limit,
+        onPageChange: fetchAndRenderArtists,
+      });
+      previousFilters = filtersKey; // кешуємо поточні фільтри
     }
 
-    pagination = createPagination({
-      totalItems: total,
-      itemsPerPage: limit,
-      onPageChange: fetchAndRenderArtists,
-    });
+    // Якщо пагінації ще не було (перший запуск)
+    if (!pagination) {
+      pagination = createPagination({
+        totalItems: total,
+        itemsPerPage: limit,
+        onPageChange: fetchAndRenderArtists,
+      });
+      previousFilters = filtersKey;
+    }
   } catch (error) {
     showError('Failed to load artists');
   } finally {
