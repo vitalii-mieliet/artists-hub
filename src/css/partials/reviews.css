@@ -224,7 +224,7 @@
 .reviews-modal-input:focus,
 .reviews-modal-textarea:focus {
   border-color: var(--color-affair);
-  box-shadow: var(--color-affair-light);
+  box-shadow: 0 4px 8px 0 var(--color-affair-light);
 }
 
 .reviews-modal-textarea {
