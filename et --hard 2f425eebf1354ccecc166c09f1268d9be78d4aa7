@@ -1,0 +1,17 @@
+[33mcommit 0f58035ad701f71486224b13783f709c91e80b56[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Will IM <vitalii.mieliet@gmail.com>
+Date:   Wed May 21 02:50:26 2025 +0300
+
+    Revert "[1;31mMerge pull request #38[m from vitalii-mieliet/artists-lesnicov"
+    
+    This reverts commit 2f425eebf1354ccecc166c09f1268d9be78d4aa7, reversing
+    changes made to d63dcbd4936d271ee7b6ef1047f07798a8c43693.
+
+[33mcommit 2f425eebf1354ccecc166c09f1268d9be78d4aa7[m
+Merge: d63dcbd 63933a5
+Author: Vitalii Mieliet <82417751+vitalii-mieliet@users.noreply.github.com>
+Date:   Wed May 21 00:00:30 2025 +0300
+
+    [1;31mMerge pull request #38[m from vitalii-mieliet/artists-lesnicov
+    
+    Artists lesnicov
