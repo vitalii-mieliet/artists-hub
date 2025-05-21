@@ -15,7 +15,6 @@ const ENDPOINTS = {
   GENRES: '/genres',
 };
 
-
 export async function getArtistListByQuery({
   currentPage = 1,
   query,
@@ -26,6 +25,18 @@ export async function getArtistListByQuery({
     limit: PER_PAGE,
     page: currentPage,
   };
+
+  if (query) params.name = query;
+  if (sortName) params.sortName = sortName;
+  if (genre) params.genre = genre;
+
+  try {
+    const response = await soundWaveAPI.get(ENDPOINTS.ARTISTS, { params });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 //
 export async function getArtistList(currentPage = 1) {
   const params = {
