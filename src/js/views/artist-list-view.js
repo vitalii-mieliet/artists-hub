@@ -37,7 +37,7 @@ export function renderArtists(artists) {
   Learn More
   <span>
     <svg class="learn-more-icon-caret-right" width="24" height="24">
-      <use href="/assets/svg/sprite.svg#icon-caret-right"></use>
+      <use href="/img/svg/sprite.svg#icon-caret-right"></use>
     </svg>
   </span>
 </button>
