@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-
 export function createPagination({ totalItems, itemsPerPage, onPageChange }) {
   const container = document.getElementById('pagination');
   const visiblePages = 3;

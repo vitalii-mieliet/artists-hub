@@ -7,12 +7,13 @@ import {
   clearArtists,
 } from '../views/artist-list-view';
 import { createPagination } from '../pagination';
+import { hideLoader, showLoader } from '../utils/loader';
 
 let pagination;
 
 async function fetchAndRenderArtists(page = 1) {
+  showLoader();
   try {
-    toggleLoader(true);
     const data = await getArtistList(page);
     clearArtists();
     renderArtists(data.artists);
@@ -29,7 +30,7 @@ async function fetchAndRenderArtists(page = 1) {
   } catch (error) {
     showError('Failed to load artists');
   } finally {
-    toggleLoader(false);
+    hideLoader();
   }
 }
 
@@ -42,7 +43,10 @@ document.addEventListener('click', e => {
   if (!btn) return;
 
   const artistId = btn.dataset.artistId;
+  const genresRaw = btn.dataset.genres;
+  const genres = genresRaw ? JSON.parse(genresRaw) : [];
+
   if (artistId) {
-    handleArtistDetails(artistId);
+    handleArtistDetails(artistId, genres);
   }
 });
