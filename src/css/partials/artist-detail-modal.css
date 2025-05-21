@@ -1,6 +1,8 @@
 /************************** Mobile-first **************************/
 
 .container-artist-modal {
+  margin-bottom: 64px;
+  margin-top: 64px;
   border-radius: 16px;
   padding: 52px 8px;
   width: 288px;
@@ -226,7 +228,7 @@
   .artist-modal-img-wrapper {
     width: 654px;
   }
-    
+
   .artist-modal-album-img {
     height: auto;
     width: 100%;
