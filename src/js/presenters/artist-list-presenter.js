@@ -3,41 +3,50 @@ import { handleArtistDetails } from './artist-details-presenter';
 import {
   renderArtists,
   toggleLoader,
-  toggleLoadMoreButton,
   showError,
+  clearArtists,
 } from '../views/artist-list-view';
+import { createPagination } from '../pagination';
+import { hideLoader, showLoader } from '../utils/loader';
 
-let currentPage = 1;
+let pagination;
 
-export async function handleArtistsList() {
+async function fetchAndRenderArtists(page = 1) {
+  showLoader();
   try {
-    toggleLoader(true);
-    const data = await getArtistList(currentPage);
+    const data = await getArtistList(page);
+    clearArtists();
     renderArtists(data.artists);
-    const limit = Number(data.limit);
-    const totalPages = Math.ceil(data.totalArtists / limit);
-    toggleLoadMoreButton(currentPage < totalPages);
+
+    if (!pagination) {
+      const limit = Number(data.limit);
+      const total = Number(data.totalArtists);
+      pagination = createPagination({
+        totalItems: total,
+        itemsPerPage: limit,
+        onPageChange: fetchAndRenderArtists,
+      });
+    }
   } catch (error) {
     showError('Failed to load artists');
   } finally {
-    toggleLoader(false);
+    hideLoader();
   }
+}
+
+export function handleArtistsList() {
+  fetchAndRenderArtists(1);
 }
 
 document.addEventListener('click', e => {
   const btn = e.target.closest('.js-learn-more-btn');
-  console.log(btn);
   if (!btn) return;
 
   const artistId = btn.dataset.artistId;
+  const genresRaw = btn.dataset.genres;
+  const genres = genresRaw ? JSON.parse(genresRaw) : [];
+
   if (artistId) {
-    handleArtistDetails(artistId);
+    handleArtistDetails(artistId, genres);
   }
 });
-
-document
-  .querySelector('.load-more-btn')
-  ?.addEventListener('click', async () => {
-    currentPage += 1;
-    await handleArtistsList();
-  });

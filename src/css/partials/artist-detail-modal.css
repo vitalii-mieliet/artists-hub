@@ -1,6 +1,8 @@
 /************************** Mobile-first **************************/
 
 .container-artist-modal {
+  margin-bottom: 64px;
+  margin-top: 64px;
   border-radius: 16px;
   padding: 52px 8px;
   width: 288px;
@@ -226,7 +228,7 @@
   .artist-modal-img-wrapper {
     width: 654px;
   }
-    
+
   .artist-modal-album-img {
     height: auto;
     width: 100%;
@@ -372,4 +374,44 @@
 
 body.modal-open {
   overflow: hidden;
+}
+
+/* ====== */
+
+.biography-paragraph {
+  max-height: 7.5em; /* приблизно 5 рядків */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 300ms ease;
+}
+
+.biography-paragraph.expanded {
+  max-height: none;
+}
+
+.biography-toggle-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 28px;
+}
+
+@media screen and (min-width: 1440px) {
+  .biography-toggle-btn {
+    display: none;
+  }
+
+  .biography-paragraph {
+    max-height: 15em; /* приблизно 5 рядків */
+    overflow-y: auto;
+    position: relative;
+    transition: max-height 300ms ease;
+  }
 }

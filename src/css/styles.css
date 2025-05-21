@@ -5,7 +5,7 @@
   |============================
 */
 /* Common styles */
-@import 'node_modules/modern-normalize/modern-normalize.css';
+@import 'modern-normalize/modern-normalize.css';
 @import url('./common/fonts.css');
 
 @import url('./common/variables.css');
@@ -19,8 +19,8 @@
 @import url('./partials/header.css');
 @import url('./partials/hero.css');
 @import url('./partials/artists.css');
+@import url('./partials/pagination.css');
 @import url('./partials/about-us');
 @import url('./partials/reviews.css');
 @import url('./partials/artist-detail-modal.css');
-
 @import url('./partials/footer.css');
