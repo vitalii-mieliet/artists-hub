@@ -452,3 +452,7 @@
   visibility: visible;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+.add-feedback-btn.button-base {
+  display: none;
+}
