@@ -1,0 +1,202 @@
+<!-- filther and modal -->
+
+<div class="artist-box-wrapper">
+  <legend class="artist-legend-article">Filters</legend>
+  <button class="artist-button-filters">
+    Search and Filters
+    <svg
+      class="arrow-icon"
+      width="13"
+      height="8"
+      viewBox="0 0 13 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.793 0.792969L6.49997 5.08597L2.20697 0.792969L0.792969 2.20697L6.49997 7.91397L12.207 2.20697L10.793 0.792969Z"
+        fill="white"
+      />
+    </svg>
+  </button>
+  <div class="artist-modal-filters-box open-desktop">
+    <div class="artist-search-field">
+      <label for="">
+        <input
+          type="text"
+          class="artist-search-input"
+          data-artist-search
+          placeholder="Search"
+        />
+      </label>
+      <button class="artist-search-button">
+        <svg class="artist-search-icon" width="19" height="19">
+          <use href="../assets/svg/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+      <button class="artist-sort-name" data-toggle-js>
+        Sorting:
+        <span class="artist-current-value" data-type-value="sort">Default</span>
+        <svg
+          width="13"
+          height="8"
+          viewBox="0 0 13 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.793 0.792969L6.49997 5.08597L2.20697 0.792969L0.792969 2.20697L6.49997 7.91397L12.207 2.20697L10.793 0.792969Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+      <span class="artist-radio-sort-box" data-artist-modal>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort" value="default" />Default
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort" value="asc" />A-Z
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort" value="desc" />Z-A
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+      </span>
+      <button class="artist-sort-name" data-toggle-js>
+        Genre:
+        <span class="artist-current-value" data-type-value="genre"
+          >All genres</span
+        >
+        <svg
+          width="13"
+          height="8"
+          viewBox="0 0 13 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.793 0.792969L6.49997 5.08597L2.20697 0.792969L0.792969 2.20697L6.49997 7.91397L12.207 2.20697L10.793 0.792969Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+      <span
+        class="artist-radio-sort-box-genre"
+        data-artist-modal
+        data-genre-list
+      >
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort-genre" />Alternative
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort-genre" />Pop
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort-genre" />Rock
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+        <label class="artist-custom-radio"
+          ><input type="radio" name="sort-genre" />Indie
+          <span class="artist-radio-icon">
+            <svg
+              width="15"
+              height="12"
+              viewBox="0 0 15 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </label>
+      </span>
+      <button type="button" class="artist-reset-filters">Reset Filters</button>
+    </div>
+  </div>
+</div>
+
+<!-- filther and modal -->
