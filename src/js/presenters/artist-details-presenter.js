@@ -1,6 +1,7 @@
 import { getArtistDetails } from '../api/soundWaveAPI';
 import { hideLoader, showLoader } from '../utils/loader';
 import { openModal } from '../utils/modal-controller';
+import { resetModalScroll } from '../utils/resetModalScroll';
 import { renderArtistDetails } from '../views/artist-details-view';
 
 export async function handleArtistDetails(id, fallbackGenres = []) {
@@ -12,6 +13,7 @@ export async function handleArtistDetails(id, fallbackGenres = []) {
     }
 
     renderArtistDetails(data);
+    resetModalScroll();
     openModal('#artist-modal');
   } catch (error) {
     console.error('An error occurred while loading the data:', error);
