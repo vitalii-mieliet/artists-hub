@@ -114,12 +114,6 @@
   color: var(--color-white);
 }
 
-/* @media only screen and (min-width: 1440px) {
-  .reviews-author {
-    margin-bottom: 75px;
-  }
-} */
-
 .splide__track {
   margin-bottom: 16px;
 }
@@ -168,8 +162,6 @@
   height: 100%;
   top: 0;
   left: 0;
-  /* right: 0; */
-  /* bottom: 0; */
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 1000;
   font-family: var(--second-family);
