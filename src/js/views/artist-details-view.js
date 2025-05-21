@@ -36,9 +36,10 @@ export function renderArtistDetails(data) {
             <li class="artist-modal-album-list-item biography-list-item-text">
               <p class="modal-album-list-item-title">Biography</p>
               <p
-                class="modal-album-list-item-value biography-paragraph scrollable"
+                class="modal-album-list-item-value biography-paragraph scrollable js-biography-paragraph"
               >${data.strBiographyEN}
               </p>
+              <button type="button" class="biography-toggle-btn js-biography-toggle">Show more</button>
             </li>
           </ul>
           <!-- </div> -->
@@ -57,6 +58,15 @@ export function renderArtistDetails(data) {
       </div>`;
   infoWrapper.innerHTML = infoMarkup;
   renderAlbums(data.tracksList);
+
+  const bioParagraph = document.querySelector('.js-biography-paragraph');
+  const toggleBtn = document.querySelector('.js-biography-toggle');
+
+  toggleBtn.addEventListener('click', () => {
+    bioParagraph.classList.toggle('expanded');
+    const isExpanded = bioParagraph.classList.contains('expanded');
+    toggleBtn.textContent = isExpanded ? 'Show less' : 'Show more';
+  });
 }
 
 function renderAlbums(tracks) {
