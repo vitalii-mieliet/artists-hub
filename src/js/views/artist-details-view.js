@@ -1,33 +1,3 @@
-export function renderArtistDetails2(data) {
-  document.querySelector('.artist-modal-name').textContent = data.strArtist;
-
-  document.querySelector('.artist-modal-album-img').src = data.strArtistThumb;
-  document.querySelector('.artist-modal-album-img').alt = data.strArtist;
-
-  document.querySelector('.biography-paragraph').textContent =
-    data.strBiographyEN;
-
-  const infoItems = document.querySelectorAll('.artist-modal-album-list-item');
-
-  infoItems[0].querySelector('.modal-album-list-item-value').textContent =
-    formatYears(data.intFormedYear, data.intDiedYear);
-  infoItems[1].querySelector('.modal-album-list-item-value').textContent =
-    data.strGender;
-  infoItems[2].querySelector('.modal-album-list-item-value').textContent =
-    data.intMembers;
-  infoItems[3].querySelector('.modal-album-list-item-value').textContent =
-    data.strCountry;
-
-  const genresList = document.querySelector('.artist-modal-genres-list');
-
-  genresList.innerHTML = '';
-  if (data.strLabel) {
-    genresList.innerHTML = `<li class="artist-modal-genres-list-item">${data.strLabel}</li>`;
-  }
-
-  renderAlbums(data.tracksList);
-}
-
 export function renderArtistDetails(data) {
   const infoWrapper = document.querySelector('.js-modal-artist-detail-info');
 
