@@ -38,19 +38,12 @@ export function handleArtistsList() {
 }
 
 document.addEventListener('click', e => {
-  console.log('Document click!', e.target);
-
   const btn = e.target.closest('.js-learn-more-btn');
   if (!btn) return;
-
-  console.log('Button clicked:', btn);
 
   const artistId = btn.dataset.artistId;
   const genresRaw = btn.dataset.genres;
   const genres = genresRaw ? JSON.parse(genresRaw) : [];
-
-  console.log('Artist ID:', artistId);
-  console.log('Genres:', genres);
 
   if (artistId) {
     handleArtistDetails(artistId, genres);
