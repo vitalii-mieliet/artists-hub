@@ -220,12 +220,12 @@
   margin-bottom: 32px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
+/* 
 .reviews-modal-input:focus,
 .reviews-modal-textarea:focus {
   border-color: var(--color-affair);
   box-shadow: 0 4px 8px 0 var(--color-affair-light);
-}
+} */
 
 .reviews-modal-textarea {
   width: 100%;
