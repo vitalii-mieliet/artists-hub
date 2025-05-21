@@ -15,6 +15,17 @@ const ENDPOINTS = {
   GENRES: '/genres',
 };
 
+
+export async function getArtistListByQuery({
+  currentPage = 1,
+  query,
+  sortName,
+  genre,
+} = {}) {
+  const params = {
+    limit: PER_PAGE,
+    page: currentPage,
+  };
 //
 export async function getArtistList(currentPage = 1) {
   const params = {
