@@ -15,7 +15,6 @@
   width: 48px;
   height: 48px;
   font-weight: 500;
-
   transition: all 0.2s ease;
   border: 1px solid transparent;
   background-color: transparent;
@@ -68,4 +67,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-last {
+  display: none !important;
 }
