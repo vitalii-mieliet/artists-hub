@@ -73,10 +73,15 @@ export function renderArtistDetails(data) {
           </ul>
           <!-- </div> -->
           <ul class="artist-modal-genres-list">
-            <li class="artist-modal-genres-list-item">Test</li>
-            <li class="artist-modal-genres-list-item">Test</li>
-            <li class="artist-modal-genres-list-item">Test</li>
-            <li class="artist-modal-genres-list-item">Test</li>
+          ${
+            data.genres
+              ?.map(
+                genre =>
+                  `<li class="artist-modal-genres-list-item">${genre}</li>`
+              )
+              .join('') ||
+            '<li class="artist-modal-genres-list-item">No genres</li>'
+          }
           </ul>
         </div>
       </div>`;
