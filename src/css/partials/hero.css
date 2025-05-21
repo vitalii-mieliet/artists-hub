@@ -138,10 +138,6 @@
     margin-bottom: 32px;
   }
 
-  .hero-link-artist {
-    margin-bottom: 32px;
-  }
-
   .hero-photo-box {
     height: 632px;
   }
@@ -158,6 +154,10 @@
 
   .hero-wrapper-down-gradient {
     height: 137px;
+  }
+
+  .hero-link-artist {
+    margin-bottom: 32px;
   }
 }
 
