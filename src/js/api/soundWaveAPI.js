@@ -41,7 +41,6 @@ export async function getArtistDetails(id) {
 
 export async function getFeedbackList(currentPage = 1) {
   const params = {
-    limit: PER_PAGE,
     page: currentPage,
   };
 
