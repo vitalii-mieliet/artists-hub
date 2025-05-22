@@ -11,20 +11,23 @@
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  /* padding: 12px; */
   width: 48px;
   height: 48px;
-  /* font-weight: 500; */
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif !important;
   transition: all 0.2s ease;
   border: 1px solid transparent;
   background-color: transparent;
   cursor: pointer;
 }
 
-.icon-tui {
+.tui-page-btn .icon-tui {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  flex-grow: 0;
   fill: aliceblue;
-  width: 14px;
-  height: 15px;
+  pointer-events: none;
 }
 
 .tui-pagination .tui-page-btn:hover {
