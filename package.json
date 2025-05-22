@@ -1,11 +1,11 @@
 {
-  "name": "test-shop",
+  "name": "artists-hub",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/test-shop/",
+    "build": "vite build --base=/artists-hub/",
     "preview": "vite preview"
   },
   "devDependencies": {
