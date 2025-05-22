@@ -12,12 +12,12 @@ export function createPagination({ totalItems, itemsPerPage, onPageChange }) {
 
   const arrowRight =
     '<svg class="tui-page-btn icon-tui" width="14" height="15">' +
-    '<use href="/images/svg/sprite.svg#icon-right-arrow-alt"></use>' +
+    '<use href="./images/svg/sprite.svg#icon-right-arrow-alt"></use>' +
     '</svg>';
 
   const arrowLeft =
     '<svg class="tui-page-btn icon-tui" width="14" height="15">' +
-    '<use href="/images/svg/sprite.svg#icon-left-arrow-alt"></use>' +
+    '<use href="../images/svg/sprite.svg#icon-left-arrow-alt"></use>' +
     '</svg>';
 
   function initPagination(page = 1) {
