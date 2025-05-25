@@ -1,9 +1,9 @@
 /* Wrapper follows the artists-list layout */
-.skeleton-wrapper {
+/* .skeleton-wrapper {
   display: flex;
   flex-direction: column;
   gap: 64px;
-}
+} */
 
 .skeleton-card {
   border-radius: 16px;
@@ -40,7 +40,7 @@
 
 .skeleton-title {
   width: 70%;
-  height: 42px;
+  height: 4px;
   border-radius: 8px;
   background: #2a2a2a;
   margin-top: 16px;
