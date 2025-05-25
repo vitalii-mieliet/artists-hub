@@ -1,0 +1,101 @@
+/* Wrapper follows the artists-list layout */
+.skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.skeleton-card {
+  border-radius: 16px;
+  padding: 0;
+  /* background-color: transparent;
+    animation: pulse 1.5s infinite ease-in-out; */
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 288px;
+  border-radius: 16px;
+  background: #2a2a2a;
+  margin-bottom: 16px;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.skeleton-tag {
+  width: 70px;
+  height: 34px;
+  border-radius: 6px;
+  background: #2a2a2a;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-title {
+  width: 70%;
+  height: 42px;
+  border-radius: 8px;
+  background: #2a2a2a;
+  margin-top: 16px;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: 25px;
+  border-radius: 6px;
+  background: #2a2a2a;
+  margin-top: 8px;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-text.short {
+  width: 80%;
+  margin-top: 4px;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-button {
+  width: 124px;
+  height: 27px;
+  border-radius: 12px;
+  background: #2a2a2a;
+  margin-top: 24px;
+  background-color: transparent;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@media only screen and (min-width: 1440px) {
+  .skeleton-card {
+    /* width: calc((100% - 32px) / 2); */
+    width: 472px;
+    border-radius: 16px;
+    padding: 0;
+  }
+  .skeleton-img {
+    height: 290px;
+    margin-bottom: 24px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #2a2a2a;
+  }
+  50% {
+    background-color: #3a3a3a;
+  }
+  100% {
+    background-color: #2a2a2a;
+  }
+}

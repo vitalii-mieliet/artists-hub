@@ -76,7 +76,6 @@ function renderCustomPagination(container, totalPages) {
   });
 }
 
-
 // function renderCustomPagination(container, totalPages) {
 //   if (!container) return;
 
@@ -100,7 +99,6 @@ function renderCustomPagination(container, totalPages) {
 //     });
 //   });
 // }
-
 
 function updatePagination(currentIndex, totalPages) {
   const buttons = document.querySelectorAll('.pagination-btn');
@@ -159,12 +157,12 @@ function updateArrowState(currentIndex, totalSlides) {
 
   const isAtStart = currentIndex === 0;
   // const isAtEnd = currentIndex === totalSlides - 1;
-  const isAtEnd = currentIndex === splideInstance.Components.Controller.getEnd();
+  const isAtEnd =
+    currentIndex === splideInstance.Components.Controller.getEnd();
 
   prev.disabled = isAtStart;
   next.disabled = isAtEnd;
 }
-
 
 export function renderFeedbackSlider(reviewsData) {
   const container = document.querySelector('.splide__list');
