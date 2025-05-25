@@ -4,8 +4,11 @@ import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
+const branch = process.env.BRANCH_NAME;
+
 export default defineConfig(({ command }) => {
   return {
+    base: branch === 'dev' ? '/artists-hub/dev/' : '/artists-hub/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
