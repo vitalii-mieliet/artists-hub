@@ -26,5 +26,5 @@
 @import url('./partials/footer.css');
 
 /* Components style */
-@import url('./components/skeleton-loader.css');
 @import url('./components/artists-filter.css');
+@import url('./components/skeleton-loader.css');
