@@ -8,13 +8,11 @@ import {
   renderGenres,
 } from '../views/artist-list-view';
 import { createPagination } from '../pagination';
-import { hideLoader, showLoader } from '../utils/loader';
 
 let pagination = null;
 let previousFilters = '';
 
 export async function fetchAndRenderArtists(page = 1) {
-  showLoader();
   try {
     const filters = getCurrentFilters();
     const filtersKey = JSON.stringify(filters); // унікальний ключ фільтрів
@@ -27,7 +25,7 @@ export async function fetchAndRenderArtists(page = 1) {
     const limit = Number(data.limit);
     const total = Number(data.totalArtists);
 
-    // 🔁 перевірка: чи змінилися фільтри
+    // перевірка: чи змінилися фільтри
     const filtersChanged = filtersKey !== previousFilters;
 
     if (filtersChanged) {
@@ -51,8 +49,6 @@ export async function fetchAndRenderArtists(page = 1) {
     }
   } catch (error) {
     showError('Failed to load artists');
-  } finally {
-    hideLoader();
   }
 }
 

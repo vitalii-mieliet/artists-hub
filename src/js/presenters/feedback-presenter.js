@@ -1,7 +1,7 @@
 import { renderFeedbackSlider } from '../views/feedback-view';
 import { getFeedbackList } from '../api/soundWaveAPI';
 
-export async function handleRevies() {
+export async function handleReviews() {
   try {
     const data = await getFeedbackList();
     renderFeedbackSlider(data);
