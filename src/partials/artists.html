@@ -3,13 +3,11 @@
     <h2 class="artists-title">Artists</h2>
     <p class="artists-title-descr">Explore Your New Favorite Artists</p>
     <div class="artists-dekstop-box">
-      <load src="/partials/artists-filter.html" />
-      <ul class="artists-list"></ul>
+      <load src="/partials/components/artists-filter.html" />
+      <ul class="artists-list skeleton-wrapper">
+        <load src="/partials/components/artists-skeleton.html" />
+      </ul>
     </div>
     <div id="pagination" class="tui-pagination"></div>
   </div>
-  <!-- 
-  <svg class="tui-page-btn icon-tui" width="24" height="24">
-    <use href="../assets/svg/sprite.svg#icon-right-arrow-alt"></use>
-  </svg> -->
 </section>

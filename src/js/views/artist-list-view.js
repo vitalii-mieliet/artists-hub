@@ -1,5 +1,6 @@
 import { getGenreList } from '../api/soundWaveAPI';
 import { iziToast } from '../libs';
+import spriteUrl from '/assets/svg/sprite.svg';
 
 const refs = {
   list: document.querySelector('.artists-list'),
@@ -36,9 +37,9 @@ export function renderArtists(artists) {
 >
   Learn More
   <span>
-    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M9 19.9426L17 12.9426L9 5.94263V19.9426Z" fill="white" />
-</svg>
+    <svg class="icon" width="24" height="25">
+    <use href="${spriteUrl}#icon-caret-right"></use>
+    </svg>
   </span>
 </button>
         </li>`;
@@ -105,11 +106,8 @@ export async function renderGenres() {
           />
           ${genre.genre}
           <span class="artist-radio-icon">
-            <svg width="15" height="12" viewBox="0 0 15 12" fill="none">
-              <path
-                d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
-                fill="white"
-              />
+             <svg class="icon" width="15" height="12">
+              <use href="${spriteUrl}#icon-check"></use>
             </svg>
           </span>
         </label>
