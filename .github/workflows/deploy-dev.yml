@@ -13,7 +13,7 @@ jobs:
       - name: Install and build 🔧
         run: |
           npm install
-          BRANCH_NAME=dev npm run build
+          npm run build:dev
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:

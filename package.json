@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/artists-hub/",
+    "build:dev": "vite build --base=/artists-hub/dev/",
     "preview": "vite preview"
   },
   "devDependencies": {
