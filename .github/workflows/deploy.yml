@@ -21,3 +21,15 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+      # Build dev copy
+      - name: Build dev 🏗️
+        run: npm run build:dev
+
+      # Deploy dev copy into /dev
+      - name: Deploy dev copy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: dist
+          target-folder: dev
+          clean: false
